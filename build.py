@@ -75,10 +75,6 @@ def fetch_related_data(cursor, solution_id):
     }
 
 
-# Read the catalog URLs from catalogs.txt
-with open("catalogs.txt") as f:
-    repo_urls = f.read().splitlines()
-
 # Process each repository
 os.makedirs(TEMP_DIR, exist_ok=True)
 
