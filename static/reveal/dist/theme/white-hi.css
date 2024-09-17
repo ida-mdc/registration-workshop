@@ -88,7 +88,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
     flex: 1;
     height: 100%;
     justify-content: space-around;
-    background-image: url('../../../img/bg.jpg');
+    background-image: url('../../../img/jpg');
   background-size: cover;
   background-position: center right; /* Make sure the image is aligned to the right */
 }

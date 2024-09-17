@@ -1,5 +1,5 @@
-baseURL = "https://ida-mdc.gitlab.io/workshops/3d-data-visualization"
+baseURL = "https://bellonet.github.io/xxx"
 languageCode = "en-us"
-title = "3D Data Visualization Workshop"
+title = "Image Registration Workshop"
 [markup.goldmark.renderer]
 unsafe= true

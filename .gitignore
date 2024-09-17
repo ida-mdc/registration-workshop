@@ -4,3 +4,10 @@ data
 public
 resources
 themes
+content/solutions.md
+content/volume_rendering_bdv.md
+layouts/page/solutions.html
+layouts/partials/solution.html
+layouts/partials/render-solution.html
+layouts/shortcodes/all_solutions_all_catalogs.html
+layouts/shortcodes/render_solution.html
