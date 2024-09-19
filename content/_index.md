@@ -122,7 +122,7 @@ SIFT can be robust and thus can be used for multimodal registration.
 
 ---
 
-## Image Transformation Types:
+## Image Transformation Types
 
 ![](img/transformations.png)
 
@@ -131,6 +131,37 @@ The transformation matrix can also be used to warp other channels or annotation 
 
 It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).
 {{</ notes >}}
+
+---
+
+## Image Transformation Generation
+
+![](img/transformation_nb.png)
+
+- [https://github.com/bellonet/image-registration-workshop/blob/main/misc/transformation_examples.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/misc/transformation_examples.ipynb
+) 
+
+---
+
+## Image Interpolation
+
+![](img/interpolation_rotation.png)
+![](img/interpolation_shearing.png)
+
+{{< notes >}}
+Interpolation is used to estimate pixel values at non-integer coordinates.
+{{</ notes >}}
+
+---
+
+## Image Interpolation Generation
+
+![](img/interpolation_nb.png)
+
+- [https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_examples.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_examples.ipynb
+) 
 
 ---
 
