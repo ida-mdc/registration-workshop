@@ -15,32 +15,23 @@ In this workshop, we will explore fundamental concepts and practical techniques 
 
 ## What is Image Registration?
 
-- Spatial alignment of two or more images:
-
 {{< horizontal >}}
 
-Multimodal:
-![](img/multimodal.jpg)
+<span style="font-size: 24px; color: white;">♡</span>
+<span style="font-size: 24px; color: white;">♡</span>
 
-Slice-to-Slice:
-![](img/slice_to_slice.png)  
+<img src="img/registration.png" alt="MRI CT registration" style="width: 700px;" />
 
-Viewpoint:
-![](img/coregistration.png)
-
-Stitching:
-![](img/stitching.jpg)
-
-Temporal:
-![](img/timesteps.jpg)
+<span style="font-size: 24px; color: white;">♡</span>
+<span style="font-size: 24px; color: white;">♡</span>
 
 {{</ horizontal >}}
+
+<h4>Spatial alignment of two or more images.</h4>
 
 {{< notes >}}
 Image registration is the process of transforming different sets of data into one coordinate system.
 {{</ notes >}}
-
-- Essential for comparing or integrating data
 
 ---
 
@@ -50,33 +41,54 @@ Image registration is the process of transforming different sets of data into on
 Image registration is widely used across multiple disciplines.
 {{</ notes >}}
 
-- **Microscopy**: Aligning images from different slices, channels, tiles, modalities, runs, or time points
-- **Medical Imaging**: Viewpoints, stacks, normalization to an atlas, co-registering images from different modalities (e.g., MRI, CT)
-- **Material Science**: Comparing material properties under varying conditions
-- **Earth Science**: Aligning satellite images for change detection, georeferencing, integration from different sensors
+- **Microscopy**: Aligning slices in a 3D stack, channels, runs, tiles, modalities, or time points.
+- **Medical Imaging**: Viewpoints, stacks, normalization to an atlas, co-registering images from different modalities (e.g., MRI, CT).
+- **Material Science**: Comparing material properties under varying conditions.
+- **Earth Science**: Aligning satellite images for change detection, georeferencing, integration from different sensors.
 
 ---
 
-## Fundamental Techniques - Detection & Transformation
+## Common needs in research
+
+{{< horizontal >}}
+
+Multimodal:
+![](img/multimodal.jpg)
+
+Stack:
+![](img/slice_to_slice.jpg)  
+
+Viewpoint:
+![](img/coregistration.jpg)
+
+Stitching:
+![](img/stitching.jpg)
+
+Temporal:
+![](img/timesteps.jpg)
+
+{{</ horizontal >}}
+
+- Essential for comparing or integrating data
+
+---
+
+## Fundamental Technique #1 - Feature Detection & Transformation
 
 {{< notes >}}
  An overview of common methods used in image registration, highlighting the two main steps involved.
 {{</ notes >}}
 
-Many classic image registration methods involve **two main steps**:
-1. **Detecting similarities**: identifying corresponding regions or features 
-   - **Feature-Based Registration**
+two main steps:
+1. **Detecting and matching similarities**: identifying corresponding regions or features 
+   - **Feature-Based Registration** (SIFT, SURT, ORB, BRISK, FAST)
    - **Segmentation-Based Registration**
    - **model Fitting**
    - **Graph-Based Methods**
 2. **Estimating and applying transformations**: Finding and applying the optimal transformation
-   - **Rigid: translation, rotation**
-   - **Affine: + scaling, shearing**
-   - **Perspective: + foreshortening**
-   - **Non-Rigid: local deformation to accommodate changes in shape**
 
 {{< notes >}}
-The transformation matrix can also be used to warp other channels or annotation data such as segmentation. 
+Estimating and applying transformations will be discussed in more detail in the next slides.
 {{</ notes >}}
 
 ---
@@ -84,19 +96,41 @@ The transformation matrix can also be used to warp other channels or annotation 
 ## Example Pipeline: Feature-Based Registration
 
 {{< notes >}}
-An example of applying a feature-based registration pipeline to align two microscopy images from different modalities.
+An example of applying a feature-based registration pipeline to align two images from different modalities.
 {{</ notes >}}
 
-1. **Detecting Similarities**: identifying corresponding features
-   - **Feature Detection and Matching**
-     - Detect keypoints (e.g., SIFT, SURF)
-     - Match features between images
+{{< horizontal >}}
 
-2. **Estimating and Applying Transformations**: aligning the images
-   - **Affine Transformation**
-     - Apply translation, rotation, scaling, shearing
-   - **Non-Rigid Transformation (TPS)**
-     - Use Thin Plate Spline for local deformations
+1. **Detecting Similarities**: identifying corresponding features
+   - **Feature Detection**
+     - Detect keypoints and their descriptors (e.g. using SIFT)
+   - **Feature Matching**
+     - Match features between images
+2. **Estimating and Applying Transformations**: one image is transformed in space to match the other
+    - **Transformation Estimation**
+      - Compute transformation matrix (e.g. affine) using matched keypoints
+    - **Warping**
+      - Apply transformation to align images
+
+<img src="img/sift_route.png" alt="sift keypoints and matches"/>
+
+{{</ horizontal >}}
+
+{{< notes >}}
+SIFT can be robust and thus can be used for multimodal registration.
+{{</ notes >}}
+
+---
+
+## Image Transformation Types:
+
+![](img/transformations.png)
+
+{{< notes >}}
+The transformation matrix can also be used to warp other channels or annotation data such as segmentation.  
+
+It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).
+{{</ notes >}}
 
 ---
 
@@ -124,7 +158,7 @@ Key challenges and preprocessing steps for effective image registration.
 {{</ notes >}}
 
 - **Preprocessing**:
-  - Denoising, intensity correction, rescaling
+  - Denoising, intensity correction, rescaling, applying filters
 
 - **Performance vs. Complexity**:
   - Trade-off between accuracy and speed
@@ -144,7 +178,7 @@ Overview of common tools, libraries, and plugins for image registration.
 {{</ notes >}}
 
 - **Fiji/ImageJ**
-  - Popular plugins: **Feature Extraction**, **TrakEM2**, **Register Virtual Stack Slices**
+  - Popular plugins: **Feature Extraction**, **Warpy** (QPath), **TrakEM2**, **Register Virtual Stack Slices**
 - **Python Libraries**
   - **OpenCV** (C++), **SimpleITK**, **scikit-image**
 - **Elastix**
