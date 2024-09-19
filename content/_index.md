@@ -159,8 +159,8 @@ Interpolation is used to estimate pixel values at non-integer coordinates.
 
 ![](img/interpolation_nb.png)
 
-- [https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_examples.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_examples.ipynb
+- [https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_example.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_example.ipynb
 ) 
 
 ---
