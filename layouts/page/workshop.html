@@ -2,10 +2,24 @@
   <div class="workshop" id="page-content">
     <div class="reveal-header">
       <a href="?view=slides" class="toggle-view hidden-in-slides">View as Slides</a>
-      <img src="{{ "img/RZ_211119_Helmholtz-Imaging_Image-Mark_4C_Black.png" | relURL }}" height="40px" alt="Helmholtz Imaging Logo"/>
+      <div class="hi-icon"></div>
     </div>
 
-    <div class="slides" id="slides-container">
+    <div class="slides limited-width" id="slides-container">
+      <section style="background-image: url({{ .Page.Params.cover | relURL }});">
+        <div class="presentation-title" {{ if isset .Page.Params "background" }} style="background-color: {{.Page.Params.background}};"{{ end }}>
+            <h1>{{ .Page.Params.title }}</h1>
+            <div class="presenter">
+              <div>{{ .Page.Params.author }}</div>
+              {{ if isset .Page.Params "author_position" }}<div>{{ .Page.Params.author_position }}</div>{{ end }}
+              <div>{{ .Page.Params.date | time.Format "Jan 2, 2006" }}</div>
+            </div>
+            <img class="hidden-in-page" src="{{ "img/RZ_211119_Helmholtz-Imaging_Logo_4C_White.png" | relURL }}" height="90vh"/>
+            <aside class="notes">
+              {{.Page.Params.description | markdownify}}
+            </aside>
+        </div>
+      </section>
       {{ partial "sections_with_toc.html" . }}
     </div>
 
@@ -14,3 +28,4 @@
     </div>
   </div>
 {{ end }}
+

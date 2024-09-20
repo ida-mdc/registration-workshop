@@ -6,33 +6,28 @@
 
 <!-- Preprocess all sections -->
 {{ range $index, $section := $sections }}
-  {{ if gt $index 0 }}
     <!-- Extract the first heading text and remove HTML tags -->
     {{ $heading := replaceRE "(?s).*?<h[1-6][^>]*>(.*?)</h[1-6]>.*" "$1" $section }}
 
     <!-- Check if the section contains <hidden /> -->
     {{ $isHidden := (findRE "<hidden[ ]*/?>" $section) }}
+    {{ $isUnlisted := (findRE "<unlisted[ ]*/?>" $section) }}
 
     <!-- Determine if the heading should be added to the TOC -->
     {{ $isDuplicate := in $usedHeadings $heading }}
     {{ if not $isHidden }}
-      {{ if not $isDuplicate }}
-        <!-- Add heading to TOC as a dictionary with index and heading -->
-        {{ $toc = $toc | append (dict "index" $index "heading" $heading) }}
-        {{ $usedHeadings = $usedHeadings | append $heading }}
-      {{ else }}
-        {{ $duplicatecHeadings = $duplicatecHeadings | append $index }}
-      {{ end }}
+        {{ if not $isUnlisted }}
+          {{ if not $isDuplicate }}
+            <!-- Add heading to TOC as a dictionary with index and heading -->
+            {{ $toc = $toc | append (dict "index" $index "heading" $heading) }}
+            {{ $usedHeadings = $usedHeadings | append $heading }}
+          {{ else }}
+            {{ $duplicatecHeadings = $duplicatecHeadings | append $index }}
+          {{ end }}
+        {{ end }}
     {{ end }}
-  {{ end }}
 {{ end }}
 
-<!-- Render the first section (Title section) -->
-<section>
-  {{ index $sections 0 | safeHTML }} <!-- Render the first section as the title -->
-</section>
-
-<!-- Render Table of Contents (TOC) after the first section -->
 <section>
   <nav class="toc">
     <h2>Table of Contents</h2>
@@ -46,24 +41,21 @@
 
 <!-- Render Full Content with Anchors for Each Section (skip the first) -->
 {{ range $index, $section := $sections }}
-  {{ if gt $index 0 }} <!-- Skip the first section -->
-    <!-- Extract the first heading text and remove HTML tags -->
-    {{ $heading := replaceRE "(?s).*?<h[1-6][^>]*>(.*?)</h[1-6]>.*" "$1" $section }}
+  <!-- Extract the first heading text and remove HTML tags -->
+  {{ $heading := replaceRE "(?s).*?<h[1-6][^>]*>(.*?)</h[1-6]>.*" "$1" $section }}
 
-    <!-- Check if the section contains <hidden /> -->
-    {{ $isHidden := (findRE "<hidden[ ]*/?>" $section) }}
+  <!-- Check if the section contains <hidden /> -->
+  {{ $isHidden := (findRE "<hidden[ ]*/?>" $section) }}
 
-    {{ if not $isHidden }}
+  {{ if not $isHidden }}
 
-      <!-- Check if the heading is a duplicate -->
-      {{ $isDuplicate := in $duplicatecHeadings $index }}
+    <!-- Check if the heading is a duplicate -->
+    {{ $isDuplicate := in $duplicatecHeadings $index }}
 
-      <!-- Add the appropriate class if the heading is a duplicate -->
-      <section id="section-{{ $index }}" {{ if $isDuplicate }}class="repeated-heading"{{ end }}>
-        {{ $section | safeHTML }}
-      </section>
-
-    {{ end }}
+    <!-- Add the appropriate class if the heading is a duplicate -->
+    <section id="section-{{ $index }}" {{ if $isDuplicate }}class="repeated-heading"{{ end }}>
+      {{ $section | safeHTML }}
+    </section>
 
   {{ end }}
 {{ end }}

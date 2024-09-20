@@ -1,1 +1,21 @@
-<div class="tutorial-link"><h4>{{.topic}}</h4><p>Tutorial link coming soon.</p></div>
+{{ $linkedPage := .global.Site.GetPage .link }} <!-- Match the page by its filename -->
+
+{{ if $linkedPage }} <!-- Ensure the page exists -->
+<div class="tutorial">
+  <a class="tutorial-link" href="{{ $linkedPage.Permalink }}">
+    <div>
+      <div class="tutorial-header"><i>Separate tutorial - click this box!</i></div>
+      <div class="title">
+        {{ partial "qr-code.html" (dict "link" $linkedPage.Permalink "identifier" .link) }}
+        <h3>{{ $linkedPage.Title }}</h3>
+      </div>
+      <div class="description">{{ $linkedPage.Description }}</div>
+    </div>
+    <span class="cover-image" style="background-image: url('{{ $linkedPage.Params.cover | relURL }}');"></span>
+  </a>
+</div>
+{{ else }}
+  <div class="tutorial-link">
+    <p>Linked page not found: {{ .link }}</p>
+  </div>
+{{ end }}

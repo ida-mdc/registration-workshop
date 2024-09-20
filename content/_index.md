@@ -1,19 +1,15 @@
 ---
 title: "Image Registration Workshop"
-date: 2024-09
+date: 2024-09-20
 draft: false
 layout: workshop
 ---
 
-{{< title_meta title="Image Registration Workshop" presenter="Ella Bahry" position="MDC / Helmholtz Imaging" date="September 2024">}}
+## What is Image Registration?
 
 {{< notes >}}
 In this workshop, we will explore fundamental concepts and practical techniques for image registration, focusing on applications in microscopy, material science, and earth science.
 {{</ notes >}}
-
----
-
-## What is Image Registration?
 
 {{< horizontal >}}
 
@@ -241,7 +237,6 @@ Overview of common tools, libraries, and plugins for image registration.
 
 ## Hands-On Session
 
-{{< tutorial-link >}}
 
 {{< notes >}}
 We will work through practical examples using Fiji/ImageJ and Python.
@@ -270,4 +265,5 @@ Contact: **ella.bahry at mdc-berlin.de**
 
 Resources I used to create this presentation: 
 - Erik Meijering - [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
+
 

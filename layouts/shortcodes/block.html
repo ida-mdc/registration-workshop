@@ -1,1 +1,3 @@
-{{ partial "block.html" (dict "content" .Inner) }}
+<div>
+    {{.Inner | markdownify}}
+</div>

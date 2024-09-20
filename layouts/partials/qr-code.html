@@ -1,0 +1,6 @@
+<div id="qr-{{.identifier}}" class="qr-code"></div>
+<script>
+  jQuery("#qr-{{.identifier}}").qrcode({
+		text	: "{{ .link }}"
+	});
+</script>

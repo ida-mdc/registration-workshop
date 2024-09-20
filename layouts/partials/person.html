@@ -1,4 +1,4 @@
 <div class="person-bio">
-  <img src="{{ .img | relURL }}" alt="{{ .name }}" class="person-img">
+  <div style="background-image: url('{{ .img | relURL }}')" class="person-img"></div>
   <div class="name">{{ .name }}</div>
 </div>

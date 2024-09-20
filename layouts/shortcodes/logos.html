@@ -1,1 +1,5 @@
-{{ partial "logos.html" (dict "logos" (split (.Inner | safeHTML) "\n")) }}
+<div class="logos">
+{{ range split (.Inner | safeHTML) "\n" }}
+  <img src="{{. | absLangURL }}"/>
+{{ end }}
+</div>

@@ -89,11 +89,22 @@
       }
     });
   </script>
+  <script src="{{"js/jquery.min.js" | relURL }}"></script>
+
+  <script type="text/javascript" src="{{"js/jquery.qrcode.js" | relURL }}"></script>
+  <script type="text/javascript" src="{{"js/qrcode.js" | relURL }}"></script>
+
 </head>
 <body>
 
   <!-- Main content will be injected here -->
   {{ block "main" . }}{{ end }}
 
+  {{ if .Store.Get "hasMermaid" }}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  {{ end }}
 </body>
 </html>

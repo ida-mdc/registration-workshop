@@ -1,0 +1,34 @@
+{{- $catalogName := .catalogName -}}
+{{- $group := .group -}}
+{{- $solutionName := .solutionName -}}
+
+<!-- Access the global context passed from the calling template -->
+{{- $global := .global -}}
+
+<!-- Check if the catalogs exist in the global context -->
+{{ with $global.Site.Data.catalogs }}
+
+  <!-- Loop through the catalogs to find the correct one -->
+  {{ range . }}
+    {{ if eq .name $catalogName }} <!-- Access the catalog name using .name -->
+      <!-- Access the solutions for the catalog -->
+      {{ with index $global.Site.Data $catalogName }}
+
+        <!-- Loop through the solutions to find the correct one -->
+        {{ range . }}
+          {{ if and (eq .group $group) (eq .name $solutionName) }}
+            <!-- Render the solution -->
+            {{ partial "solution.html" . }}
+            {{ break }} <!-- Stop looping once the solution is found -->
+          {{ end }}
+        {{ end }}
+
+      {{ else }}
+        <p>No solutions found for the catalog "{{ $catalogName }}".</p>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+{{ else }}
+  <p>No catalogs found in .Site.Data.catalogs.</p>
+{{ end }}

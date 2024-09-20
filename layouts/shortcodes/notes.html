@@ -1,1 +1,3 @@
-{{ partial "notes.html" (dict "content" .Inner) }}
+<aside class="notes">
+    {{.Inner | markdownify}}
+</aside>

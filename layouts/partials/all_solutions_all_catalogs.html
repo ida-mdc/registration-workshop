@@ -1,0 +1,26 @@
+{{- $global := .global -}}
+
+{{ if $global.Site.Data }}
+  {{ with $global.Site.Data.catalogs }}
+  <section><div class="presentation-title"><h1>List of solutions</h1></div></section>
+
+  {{ range . }}
+    <section>
+      <section class="subsection catalog-usage">
+        {{ partial "catalog.html" . }}
+      </section>
+      <hr>
+
+      {{ with index $global.Site.Data .name }}
+        {{ range . }}
+          <section class="solution">{{ partial "solution.html" . }}</section>
+        {{ end }}
+      {{ else }}
+        <section>No solutions found for this catalog.</section>
+      {{ end }}
+    </section>
+  {{ end }}
+  {{ end }}
+{{ else }}
+  <section>No data found in .Site.Data</section>
+{{ end }}

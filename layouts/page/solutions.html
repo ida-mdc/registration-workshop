@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <div class="solutions scroll" id="page-content">
+    <div class="reveal-header">
+      <a href="?view=slides" class="toggle-view hidden-in-slides">View as Slides</a>
+      <div class="hi-icon"></div>
+    </div>
+      <div class="slides" id="slides-container">
+      {{ .Content }}
+    </div>
+    <div class="reveal-footer">
+      <span>2024</span> | <span><b>HELMHOLTZ IMAGING</b></span><span class="hidden-in-page"><a href="?view=scroll"><strong>Exit slides</strong></a></span>
+    </div>
+  </div>
+{{ end }}

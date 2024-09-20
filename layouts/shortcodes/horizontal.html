@@ -1,1 +1,6 @@
-{{ partial "horizontal.html" (dict "content" .Inner) }}
+<div class="flex"></div>
+<div class="horizontal">
+    {{.Inner | markdownify}}
+</div>
+<div class="flex"></div>
+
