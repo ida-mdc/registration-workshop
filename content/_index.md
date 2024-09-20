@@ -116,6 +116,10 @@ An example of applying a feature-based registration pipeline to align two images
 
 {{</ horizontal >}}
 
+- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/sift_example.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/sift_example.ipynb
+) 
+
 {{< notes >}}
 SIFT can be robust and thus can be used for multimodal registration.
 {{</ notes >}}
@@ -138,8 +142,8 @@ It's common to apply a more rough transformation first (e.g. affine), followed b
 
 ![](img/transformation_nb.png)
 
-- [https://github.com/bellonet/image-registration-workshop/blob/main/misc/transformation_examples.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/misc/transformation_examples.ipynb
+- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
 ) 
 
 ---
@@ -159,8 +163,8 @@ Interpolation is used to estimate pixel values at non-integer coordinates.
 
 ![](img/interpolation_nb.png)
 
-- [https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_example.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/misc/interpolation_example.ipynb
+- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation_example.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation_example.ipynb
 ) 
 
 ---
