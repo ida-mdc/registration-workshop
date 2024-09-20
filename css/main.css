@@ -2,6 +2,8 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
   background: #ededef;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -93,6 +95,11 @@ h1, h2, h3 {
     display: flex;
 }
 
+.reveal .reveal-header {
+    margin-right: 2vw;
+    padding-top: 2vw;
+}
+
 h3 {
     color: #0059a0;
 }
@@ -100,13 +107,10 @@ h3 {
 .reveal-header img {
     margin: 0 0px 0 60px;
 }
-.reveal .reveal-footer {
-  position: absolute;
-  bottom:  1.5em;
-  right: 120px;
-  font-size: 25px;
-  padding: 5px;
-  z-index: 100;
+
+
+.reveal .reveal-header img {
+    margin: 0 0px 0 2vw;
 }
 
 .reveal-footer span {
@@ -165,6 +169,7 @@ hr { flex-basis: 100%; height: 0; margin: 0; border: none; }
 
 .citations {
     color: #222224;
+    font-size: 90%;
 }
 
 .solutions section {
@@ -229,6 +234,14 @@ section.solution .solution-box .preview {
     display: flex;
     flex: 1;
     align-self: stretch;
+    flex-direction: column;
+    margin-right: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+.scroll .person-bio {
+    margin-top: 20px;
 }
 
 .reveal .person-bio {
@@ -236,11 +249,33 @@ section.solution .solution-box .preview {
     align-items: flex-start;
 }
 
+.person-bio.contentful {
+    flex-direction: row;
+}
+
+.scroll .person-bio.contentful {
+    align-self: flex-start;
+}
+
+.person-bio.contentful .person-details {
+    text-align: left;
+    margin-left: 20px;
+}
+
 .person-bio .person-img {
     border: 2px solid #0059a0;
-    margin-right: 30px;
     margin-top: 0px;
     margin-bottom: 0px;
+    background-size: cover;
+    background-position: center center;
+    height: 300px;
+    width: 250px;
+}
+
+.reveal .person-bio .person-img {
+    margin-right: 3vh;
+    height: 10vw;
+    width: 10vw;
 }
 
 .person-bio .name {
@@ -248,19 +283,18 @@ section.solution .solution-box .preview {
 }
 
 .reveal .person-bio .name {
-    font-size: 30px;
+    font-size: 2vw;
 }
 
 .reveal .person-bio .position {
-    font-size: 25px;
+    font-size: 1.5vw;
 }
 
 .reveal .citations {
-    max-width: 1000px;
+    max-width: 1400px;
 }
 
 .reveal .citations ul {
-    font-size: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -292,6 +326,31 @@ section.solution .solution-box .preview {
 
 section .horizontal {
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-self: stretch;
+}
+
+section .horizontal > figure {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+section .horizontal > figure img {
+    object-fit: contain;
+    object-position: center;
+    margin: 40px;
+}
+
+section .horizontal > figure figcaption {
+}
+
+.scroll section .horizontal > figure figcaption {
+    padding: 10px;
+    margin-top: -40px;
 }
 
 .horizontal > * {
@@ -300,23 +359,34 @@ section .horizontal {
 
 .scroll {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .workshop.scroll .slides {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.scroll .qr-code {
+    display: none;
+}
+
+.scroll .limited-width {
     max-width: 1200px;
     align-self: center;
 }
 
-.scroll h1 {
-    font-size: 3em;
-}
-
-.scroll .presentation-title {
+.limited-width {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding-right: 30px
+    flex: 1;
+    align-self: stretch;
+}
+
+.scroll h1 {
+    font-size: 3em;
 }
 
 .scroll .presenter {
@@ -331,6 +401,45 @@ section .horizontal {
     margin-right: 20px;
 }
 
+.slides > section:first-child {
+    background: black;
+    color: white;
+    flex: 1;
+    height: 100%;
+    justify-content: space-evenly;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: top right; /* Make sure the image is aligned to the right */
+}
+
+.scroll .slides > section:first-child {
+    padding-top: 100px;
+    background-position: center right;
+    background-size: 50%;
+}
+
+.scroll .slides > section:first-child .notes {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+section .presentation-title {
+    flex: 1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    background: black;
+}
+
+.scroll section .presentation-title {
+    padding-left: 0px;
+    padding-top: 0;
+}
+.scroll section .presentation-title h1 {
+    margin-top: 0px;
+}
 .workshop .scroll section:nth-of-type(2) {
   background-color: #f3f3f3;
   color: #333;
@@ -355,10 +464,6 @@ section .horizontal {
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
-
-.notes {
-    margin: 30px 0;
 }
 
 .scroll img {
@@ -414,6 +519,24 @@ section .horizontal {
     background: #fdfdff;
     padding: 20px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.scroll .reveal-header {
+    margin: 20px 20px -160px 20px;
+    height: 50px;
+    padding: 20px;
+    background: #ededef;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+.scroll .reveal-header a {
+    margin: 0 20px 0 0;
 }
 
 .scroll .repeated-heading {
@@ -429,5 +552,125 @@ section .horizontal {
     align-self: stretch;
 }
 
+.center ul {
+    text-align: left;
+    display: inline-block;
+}
+
 .scroll .notes li {
+}
+
+.hi-icon {
+    background-image: url("../img/RZ_211119_Helmholtz-Imaging_Image-Mark_4C_Black.png");
+    width: 2vw;
+    height: 2vw;
+    background-size: contain;
+}
+
+.scroll .hi-icon {
+}
+
+
+.reveal .tutorial-link, .tutorial-link {
+    min-height: 350px;
+    justify-content: stretch;
+    padding: 10px;
+    color: black;
+    display: flex;
+    background: white;
+    border: 1px solid white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.reveal .tutorial-link:hover, .tutorial-link:hover {
+    color: black;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: box-shadow 0.15s ease;
+}
+
+.reveal .tutorial-link > *, .tutorial-link > * {
+    flex: 1;
+}
+
+.tutorial {
+    padding: 0;
+    margin-top: 20px;
+}
+
+.reveal .tutorial {
+    align-self: stretch;
+    margin: 0.5vw 2vw;
+}
+
+.tutorial-link .title {
+    font-size: 150%;
+    font-weight: bold;
+    display: flex;
+}
+
+.tutorial-link .description {
+}
+
+.tutorial-link .cover-image {
+    flex: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center center;
+    margin: 0 0 0 20px;
+}
+
+.scroll .qr-code-slides {
+    display: none;
+}
+
+.scroll .reveal-footer {
+    display: none;
+}
+
+.home .tutorial-header {
+    display: none;
+}
+
+.home ul{
+    list-style: none;
+}
+
+.home ul ul {
+    margin: 0;
+    padding: 0;
+}
+
+.home ul ul > li {
+    margin: 20px 0 20px 40px;
+}
+
+.home ul ul > li .tutorial-link {
+    min-height: 0;
+}
+
+.home ul ul > li .title h3 {
+    margin: 0 0 10px 0;
+}
+
+
+.home ul ul > li .cover-image{
+    width: 200px;
+    height: 200px;
+    flex: none;
+}
+
+figure.inline {
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+}
+
+figure.inline img {
+    margin: 10px;
+}
+
+figure.center {
+    align-self: center;
+    max-width: 85%;
 }
