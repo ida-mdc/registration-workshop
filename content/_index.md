@@ -244,26 +244,18 @@ We will work through practical examples using Fiji/ImageJ and Python.
 
 ---
 
-## Conclusion
-
-{{< notes >}}
-Recap of key concepts and encouragement to apply these techniques.
-{{</ notes >}}
-
-- Importance of image registration in research.
-- Next steps for implementing in your own work
-
----
 
 ## Thank You!
 
-{{< notes >}}
-Thank you for participating. Please feel free to reach out with any questions.
-{{</ notes >}}
+#### Thanks for participating. Please feel free to reach out with any questions.
+
+![](img/people/hi-support-staff.jpg)
+
+Resources I used to create this presentation:  
+- Deborah Schmidt - [https://ida-mdc.gitlab.io/workshops/3d-data-visualization/](https://ida-mdc.gitlab.io/workshops/3d-data-visualization/)
+- Erik Meijering - [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
+
 
 Contact: **ella.bahry at mdc-berlin.de**
-
-Resources I used to create this presentation: 
-- Erik Meijering - [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
 
 
