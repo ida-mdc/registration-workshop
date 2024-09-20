@@ -255,7 +255,7 @@ We will work through practical examples using Fiji/ImageJ and Python.
 Recap of key concepts and encouragement to apply these techniques.
 {{</ notes >}}
 
-- Importance of image registration in research
+- Importance of image registration in research.
 - Next steps for implementing in your own work
 
 ---
