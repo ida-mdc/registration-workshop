@@ -3,11 +3,11 @@ name: GitHub Pages Deployment
 on:
   push:
     branches:
-      - main  # Trigger on pushes to the main branch
+      - main  # Triggers the workflow on pushes to the main branch
 
 jobs:
   build-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Use GitHub-hosted runner
 
     steps:
       - name: Checkout Repository
@@ -29,5 +29,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          target_branch: gh-pages  # Deploy to gh-pages branch
-
+          publish_branch: gh-pages
+          
