@@ -131,9 +131,13 @@ SIFT can be robust and thus can be used for multimodal registration.
 ![](img/transformations.png)
 
 {{< notes >}}
-The transformation matrix can also be used to warp other channels or annotation data such as segmentation.  
 
+The type of transformation should be chosen based on the expected deformations in the images.  
 It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).
+
+The transformation matrix can also be used to warp other channels or annotation data such as segmentation labels.  
+
+Rigid transformation requires 2 points, affine 3 points, perspective 4 points, ideally for local deformations require more.
 {{</ notes >}}
 
 ---
@@ -188,21 +192,33 @@ Introducing registration methods that integrate detection and transformation int
 
 ## Challenges & Considerations
 
-{{< notes >}}
-Key challenges and preprocessing steps for effective image registration.
-{{</ notes >}}
+{{< horizontal >}}
 
 - **Preprocessing**:
   - Denoising, intensity correction, rescaling, applying filters
-
+  - In hard cases - Use extrinsic information (e.g., physical landmarks)
 - **Performance vs. Complexity**:
   - Trade-off between accuracy and speed
-
 - **Transformation Type**:
   - Fit transformation to deformation (e.g., rigid vs. non-rigid)
-
 - **Method Selection**:
   - Match image type (e.g., multimodal) to appropriate method
+
+![](img/edge_detection.png)
+
+{{</ horizontal >}}
+
+- Image source - Erik Meijering: [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
+
+---
+
+{{< horizontal >}}
+
+## Image Registration Guidelines
+
+![Image Registration Guideline](img/flowchart.png)
+
+{{</ horizontal >}}
 
 ---
 
@@ -251,4 +267,7 @@ Thank you for participating. Please feel free to reach out with any questions.
 {{</ notes >}}
 
 Contact: **ella.bahry at mdc-berlin.de**
+
+Resources I used to create this presentation: 
+- Erik Meijering - [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
 
