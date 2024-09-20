@@ -1,7 +1,0 @@
-.idea
-.hugo_build.lock
-data
-public
-resources
-themes
-example_notebooks/.ipynb_checkpoints/
