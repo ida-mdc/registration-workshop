@@ -148,24 +148,40 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 
 ---
 
-## Image Interpolation
+## Image Interpolation - Common Types
+
+{{< notes >}}
+When you transform an image to a new space, you need to estimate the pixel values at the new locations.
+Interpolation is used to estimate pixel values at non-integer coordinates.
+{{</ notes >}}
+
+![](img/interpolation_functions.png)
+Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0
+
+![](img/interpolation_weights.png)
+
+---
+
+## Image Interpolation Example
 
 ![](img/interpolation_rotation.png)
 ![](img/interpolation_shearing.png)
 
-{{< notes >}}
-Interpolation is used to estimate pixel values at non-integer coordinates.
-{{</ notes >}}
-
 ---
 
-## Image Interpolation Generation
+## Image Interpolation Notebook
 
 ![](img/interpolation_nb.png)
 
-- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation_example.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation_example.ipynb
+- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
 ) 
+
+{{< notes >}}
+- Interpolation weights demo: For each interpolation type it randomly picks subpixel localization and shows weights of surrounding pixels.
+- Example toy image: Shows the effect of different interpolation types on a simple image.
+- Example of anti-aliasing when down-sampling.
+{{</ notes >}}
 
 ---
 
