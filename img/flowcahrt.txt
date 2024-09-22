@@ -23,7 +23,7 @@ digraph ImageRegistrationGuideline {
     // Paths from similarity_check
     intensity_based [label="Use Intensity-Based Registration\n(e.g., Cross-Correlation)"];
     mutual_information [label="Use Histogram-Based Registration\n(e.g., Mutual Information)"];
-    feature_based [label="Use Feature-Based Methods\n(e.g., SIFT, ORB, SURF)"];
+    feature_based [label="Use Feature-Based Methods"];
     retake_images [label="Retake Images with Extrinsic Landmarks\nor Improved Features", shape=ellipse, style=filled, fillcolor=lightgrey];
 
     // Transformation Type Decision
@@ -65,8 +65,16 @@ digraph ImageRegistrationGuideline {
     // Linking Registration Methods to Transformation Type
     intensity_based -> transformation_type;
     mutual_information -> transformation_type;
-    feature_based -> transformation_type;
 
+    // Split Feature-Based Methods
+    feature_based -> classic_feature_based [label="Image Features"];
+    classic_feature_based [label="Classic Feature-Based Methods\n(e.g., SIFT, ORB, SURF)"];
+    classic_feature_based -> transformation_type;
+    
+    feature_based -> pose_estimation_based [label="Model Based"];
+    pose_estimation_based [label="Model-Based Feature Detection\n(e.g., Pose Estimation via DeepLabCut)"];
+    pose_estimation_based -> transformation_type;
+    
     // Decision on Transformation Type
     transformation_type -> rigid_transformation [label="Global Deformations"];
 
