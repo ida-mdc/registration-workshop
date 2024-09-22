@@ -122,6 +122,36 @@ SIFT can be robust and thus can be used for multimodal registration.
 
 ---
 
+## Example Pipeline: Model Based Feature-Based Registration
+
+{{< notes >}}
+In cases where many images need to be registered to the same space and pre-known features can be identified, a model-based registration pipeline can be applied.
+When the relationship of the distances between the features are pre-known, similar graph-based methods can be used.
+Deap learning based approaches can perform well on those tasks with minimal training data.
+{{</ notes >}}
+
+{{< horizontal >}}
+
+1. **Predefined Feature Detection**: e.g. pose estimation.
+   - **Manual selection of features**
+   - **Annotation of training data**
+   - **Model selection, training, and prediction**
+2. **Estimating and Applying Transformations**: All images are transformed in space to match a template image.
+    - **Transformation Estimation**
+      - Compute transformation matrix (e.g. affine) using matched keypoints
+    - **Warping**
+      - Apply transformation to align images
+
+<img src="img/wing_landmarks.png" alt="wing landmarks model"/><img src="img/wing_registration.png" alt="wing landmarks model"/>
+
+{{</ horizontal >}}
+
+{{< notes >}}
+DeepLabCut is a tracking tool that is open-source and offer great models that can be used for pose estimation and predefined feature detection.
+{{</ notes >}}
+
+---
+
 ## Image Transformation Types
 
 ![](img/transformations.png)
@@ -243,9 +273,11 @@ Overview of common tools, libraries, and plugins for image registration.
 - **Fiji/ImageJ**
   - Popular plugins: **Feature Extraction**, **Warpy** (QPath), **TrakEM2**, **Register Virtual Stack Slices**
 - **Python Libraries**
-  - **OpenCV** (C++), **SimpleITK**, **scikit-image**
+  - **OpenCV** (C++), **scikit-image**
 - **Elastix**
-  - Powerful tool for rigid and non-rigid registration
+  - ITKElastix (C++) is a powerful open-source tool (standalone or as a python package) for  intensity-based registration.
+- **DeepLabCut**
+  - Open-source deep learning based pose estimation and model based feature detection (and tracking)
 - **MATLAB**
   - Image Processing Toolbox (functions like `imregister`, `cpselect`)
 
@@ -253,13 +285,11 @@ Overview of common tools, libraries, and plugins for image registration.
 
 ## Hands-On Session
 
-
 {{< notes >}}
 We will work through practical examples using Fiji/ImageJ and Python.
 {{</ notes >}}
 
 ---
-
 
 ## Thank You!
 
