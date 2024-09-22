@@ -69,7 +69,34 @@ Temporal:
 
 ---
 
-## Fundamental Technique #1 - Feature Detection & Transformation
+## Integrated Techniques: One-Step Registration
+
+{{< notes >}}
+Introducing registration methods that integrate detection and transformation into a single process.
+{{</ notes >}}
+
+- **Intensity-Based Registration**
+  - Iterative - Optimize pixel intensity similarities directly to align images
+- **Mutual Information-Based Registration**
+  - Iterative - Use statistical dependence to align multimodal images
+- **Frequency Domain Methods**
+  - Compute transformations using Fourier transforms in the frequency domain.
+- **Deep Learning-Based Registration**
+  - Neural networks predict transformations directly from image data
+
+---
+
+## Example Technique: Mutual Information
+
+<img src="img/joint_histogram_iterative.gif" alt="Mutual Information iterations"/>
+
+- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
+) 
+
+---
+
+## 2 Step Techniques - Feature Detection & Transformation
 
 {{< notes >}}
  An overview of common methods used in image registration, highlighting the two main steps involved.
@@ -215,23 +242,6 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 
 ---
 
-## Integrated Techniques: One-Step Registration
-
-{{< notes >}}
-Introducing registration methods that integrate detection and transformation into a single process.
-{{</ notes >}}
-
-- **Intensity-Based Registration**
-  - Iterative - Optimize pixel intensity similarities directly to align images
-- **Mutual Information-Based Registration**
-  - Iterative - Use statistical dependence to align multimodal images
-- **Frequency Domain Methods**
-  - Compute transformations using Fourier transforms in the frequency domain.
-- **Deep Learning-Based Registration**
-  - Neural networks predict transformations directly from image data
-
----
-
 ## Challenges & Considerations
 
 {{< horizontal >}}
@@ -274,12 +284,17 @@ Overview of common tools, libraries, and plugins for image registration.
   - Popular plugins: **Feature Extraction**, **Warpy** (QPath), **TrakEM2**, **Register Virtual Stack Slices**
 - **Python Libraries**
   - **OpenCV** (C++), **scikit-image**
-- **Elastix**
+- **[Elastix](https://elastix.dev/index.php)**
   - ITKElastix (C++) is a powerful open-source tool (standalone or as a python package) for  intensity-based registration.
-- **DeepLabCut**
-  - Open-source deep learning based pose estimation and model based feature detection (and tracking)
-- **MATLAB**
-  - Image Processing Toolbox (functions like `imregister`, `cpselect`)
+- **[DeepLabCut](https://github.com/DeepLabCut/DeepLabCut)**
+  - Open-source deep learning based pose estimation and model based feature detection (and tracking).
+
+<br>
+
+- VoltRon: R package that includes an interactive GUI for image registration.  
+[https://bioinformatics.mdc-berlin.de/VoltRon/index.html](https://bioinformatics.mdc-berlin.de/VoltRon/index.html)
+- SIFT based image registration Python package:   
+[https://gitlab.com/ida-mdc/image-registration-tool](https://gitlab.com/ida-mdc/image-registration-tool)
 
 ---
 
