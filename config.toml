@@ -2,5 +2,7 @@ baseURL = "https://bellonet.github.io/image-registration-workshop/"
 languageCode = "en-us"
 title = "Image Registration Workshop"
 
-[markup.goldmark.renderer]
-  unsafe = true
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

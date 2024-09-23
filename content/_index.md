@@ -1,8 +1,10 @@
 ---
 title: "Image Registration Workshop"
-date: 2024-09-20
+date: 2024-09-23
 draft: false
 layout: workshop
+author: Ella Bahry
+cover: img/registration.png
 ---
 
 ## What is Image Registration?
@@ -11,23 +13,38 @@ layout: workshop
 In this workshop, we will explore fundamental concepts and practical techniques for image registration, focusing on applications in microscopy, material science, and earth science.
 {{</ notes >}}
 
-{{< horizontal >}}
-
-<span style="font-size: 24px; color: white;">♡</span>
-<span style="font-size: 24px; color: white;">♡</span>
-
-<img src="img/registration.png" alt="MRI CT registration" style="width: 700px;" />
-
-<span style="font-size: 24px; color: white;">♡</span>
-<span style="font-size: 24px; color: white;">♡</span>
-
-{{</ horizontal >}}
+![](img/registration_big.png)
 
 <h4>Spatial alignment of two or more images.</h4>
+ 
+- In science, it's an essential  step for comparing or integrating data
+
 
 {{< notes >}}
-Image registration is the process of transforming different sets of data into one coordinate system.
+Image registration is the process of aligning multiple datasets into a common coordinate system, enabling accurate comparison and analysis.
 {{</ notes >}}
+
+---
+
+## Common needs in research
+
+{{< horizontal >}}
+Multimodal:
+![](img/multimodal.jpg)
+
+Stitching:
+![](img/stitching.jpg)
+
+Stack:
+![](img/slice_to_slice.jpg)  
+
+Viewpoint:
+![](img/coregistration.jpg)
+
+Temporal:
+![](img/timesteps.jpg)
+
+{{</ horizontal >}}
 
 ---
 
@@ -37,58 +54,64 @@ Image registration is the process of transforming different sets of data into on
 Image registration is widely used across multiple disciplines.
 {{</ notes >}}
 
-- **Microscopy**: Aligning slices in a 3D stack, channels, runs, tiles, modalities, or time points.
+- **Microscopy**: Aligning slices in a 3D stack, channels, runs, time points, tiles (stitching), and modalities.
+<br><br>
 - **Medical Imaging**: Viewpoints, stacks, normalization to an atlas, co-registering images from different modalities (e.g., MRI, CT).
+<br><br>
 - **Material Science**: Comparing material properties under varying conditions.
-- **Earth Science**: Aligning satellite images for change detection, georeferencing, integration from different sensors.
-
----
-
-## Common needs in research
-
-{{< horizontal >}}
-
-Multimodal:
-![](img/multimodal.jpg)
-
-Stack:
-![](img/slice_to_slice.jpg)  
-
-Viewpoint:
-![](img/coregistration.jpg)
-
-Stitching:
-![](img/stitching.jpg)
-
-Temporal:
-![](img/timesteps.jpg)
-
-{{</ horizontal >}}
-
-- Essential for comparing or integrating data
+<br><br>
+- **Earth Science**: Georeferencing, integration from different sensors, aligning satellite images for change detection.
 
 ---
 
 ## Integrated Techniques: One-Step Registration
 
 {{< notes >}}
-Introducing registration methods that integrate detection and transformation into a single process.
+Introducing registration methods that combine both matching and transformation into one smooth process, simplifying image alignment. 
 {{</ notes >}}
 
 - **Intensity-Based Registration**
-  - Iterative - Optimize pixel intensity similarities directly to align images
+  - Iterative process that optimizes aligned pixel intensity similarities (e.g. **correlation coefficient** or **MSE**).
 - **Mutual Information-Based Registration**
-  - Iterative - Use statistical dependence to align multimodal images
+  - Iteratively aligns multimodal images by maximizing the statistical relationship between them.
 - **Frequency Domain Methods**
-  - Compute transformations using Fourier transforms in the frequency domain.
+  - Transforms images into the Fourier space to compute alignment transformations.
 - **Deep Learning-Based Registration**
-  - Neural networks predict transformations directly from image data
+  - Uses neural networks to predict transformations from image data, learning complex patterns.
+
+---
+
+## Example Technique: Correlation Coefficient
+
+![](img/correlation_r45_s1.5.png)
+![](img/correlation_r10_s1.1.png)
+![](img/correlation_r2_s1.png)
+![](img/correlation_r0_s1.png)
+
+{{< notes >}}
+[https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/correlation_example.ipynb
+](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/correlation_example.ipynb
+)
+{{</ notes >}}
 
 ---
 
 ## Example Technique: Mutual Information
 
+{{< horizontal >}}
+
 <img src="img/joint_histogram_iterative.gif" alt="Mutual Information iterations"/>
+
+![](img/mutual_information_equation.png)
+
+{{</ horizontal >}}
+
+- Looking at the equation, the more structure we have in the joint histogram, the lower its entropy, and thus the mutual information is higher.
+
+{{< notes >}}
+Entropy is maximized when there is maximum uncertainty or randomness in the pixel intensities.  
+Meaning that an image with a single pixel intensity value will have minimum entropy, and an image with a uniform distribution of pixel intensities will have maximum entropy.
+{{</ notes >}}
 
 - [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
 ](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
@@ -96,7 +119,7 @@ Introducing registration methods that integrate detection and transformation int
 
 ---
 
-## 2 Step Techniques - Feature Detection & Transformation
+<h2>2 Step Techniques - Feature Detection & Transformation</h2>
 
 {{< notes >}}
  An overview of common methods used in image registration, highlighting the two main steps involved.
