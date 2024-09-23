@@ -67,6 +67,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 .reveal .slides {
     display: flex;
     text-align: left;
+    flex: 1;
 }
 
 .reveal .slides section,
@@ -116,6 +117,7 @@ section.subsection h1, section.subsection h2 {
 
 .reveal .toc {
     flex: 1;
+    font-size: 2vh;
 }
 
 .reveal .qr-code-slides {
