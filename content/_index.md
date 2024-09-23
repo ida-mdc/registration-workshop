@@ -64,7 +64,59 @@ Image registration is widely used across multiple disciplines.
 
 ---
 
-## Integrated Techniques: One-Step Registration
+
+## Image Transformation Types
+
+![](img/transformations.png)
+
+[Link to: example_notebooks/transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
+) 
+
+{{< notes >}}
+
+The type of transformation should be chosen based on the expected deformations in the images.  
+It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).
+
+The transformation matrix can also be used to warp other channels or annotation data such as segmentation labels.  
+
+Rigid transformation requires 2 points, affine 3 points, perspective 4 points, ideally for local deformations require more.
+{{</ notes >}}
+
+---
+
+## Image Interpolation - Common Types
+
+{{< notes >}}
+When you transform an image to a new space, you need to estimate the pixel values at the new locations.
+Interpolation is used to estimate pixel values at non-integer coordinates.
+{{</ notes >}}
+
+{{< horizontal >}}
+![](img/interpolation_functions.png) 
+
+![](img/interpolation_weights.png)
+{{</ horizontal >}}
+
+Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0  
+[Link to interpolation weights and examples notebook: example_notebooks/interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
+) 
+
+{{< notes >}}
+- Interpolation weights demo: For each interpolation type it randomly picks subpixel localization and shows weights of surrounding pixels.
+- Example toy image: Shows the effect of different interpolation types on a simple image.
+- Example of anti-aliasing when down-sampling.
+{{</ notes >}}
+
+---
+
+## Image Interpolation Example
+
+![](img/interpolation_rotation.png)
+![](img/interpolation_shearing.png)
+
+---
+
+## Integrated Image Registration Techniques
 
 {{< notes >}}
 Introducing registration methods that combine both matching and transformation into one smooth process, simplifying image alignment. 
@@ -101,6 +153,7 @@ Introducing registration methods that combine both matching and transformation i
 
 <img src="img/joint_histogram_iterative.gif" alt="Mutual Information iterations"/>
 
+![](img/hist.png)
 ![](img/mutual_information_equation.png)
 
 {{</ horizontal >}}
@@ -192,58 +245,7 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 ---
 
-## Image Transformation Types
-
-![](img/transformations.png)
-
-[Link to: example_notebooks/transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
-) 
-
-{{< notes >}}
-
-The type of transformation should be chosen based on the expected deformations in the images.  
-It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).
-
-The transformation matrix can also be used to warp other channels or annotation data such as segmentation labels.  
-
-Rigid transformation requires 2 points, affine 3 points, perspective 4 points, ideally for local deformations require more.
-{{</ notes >}}
-
----
-
-## Image Interpolation - Common Types
-
-{{< notes >}}
-When you transform an image to a new space, you need to estimate the pixel values at the new locations.
-Interpolation is used to estimate pixel values at non-integer coordinates.
-{{</ notes >}}
-
-{{< horizontal >}}
-![](img/interpolation_functions.png) 
-
-![](img/interpolation_weights.png)
-{{</ horizontal >}}
-
-Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0  
-[Link to interpolation weights and examples notebook: example_notebooks/interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
-) 
-
-{{< notes >}}
-- Interpolation weights demo: For each interpolation type it randomly picks subpixel localization and shows weights of surrounding pixels.
-- Example toy image: Shows the effect of different interpolation types on a simple image.
-- Example of anti-aliasing when down-sampling.
-{{</ notes >}}
-
----
-
-## Image Interpolation Example
-
-![](img/interpolation_rotation.png)
-![](img/interpolation_shearing.png)
-
----
-
-## Challenges & Considerations
+<h2>Challenges & Considerations</h2>
 
 {{< horizontal >}}
 
