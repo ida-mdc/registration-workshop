@@ -14,7 +14,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 :root {
   --r-background-color: #fff;
   --r-main-font: 'Urbanist', Helvetica, sans-serif;
-  --r-main-font-size: 2vw;
+  --r-main-font-size: 1.5vw;
   --r-main-color: #000;
   --r-block-margin: 1.5vw 2vw;
   --r-heading-margin: 2vw 1.5vw 1vw 2vw;
@@ -26,10 +26,10 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 600;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 3.6vw;
-  --r-heading2-size: 3.6vw;
-  --r-heading3-size: 2.3vw;
-  --r-heading4-size: 2.3vw;
+  --r-heading1-size: 3.2vw;
+  --r-heading2-size: 3.2vw;
+  --r-heading3-size: 2vw;
+  --r-heading4-size: 2vw;
   --r-code-font: monospace;
   --r-link-color: #e1462c;
   --r-link-color-dark: #e1462c;
@@ -67,7 +67,6 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 .reveal .slides {
     display: flex;
     text-align: left;
-    flex: 1;
 }
 
 .reveal .slides section,
@@ -301,11 +300,11 @@ section.subsection h1, section.subsection h2 {
 .reveal ul {
   display: inline-block;
   text-align: left;
-  margin: 1.5vw 2vw;
+  margin: 1vw 2vw;
 }
 
 .reveal ul li {
-    margin-bottom: 0.5vw;
+    margin-bottom: 0.3vw;
 }
 
 .reveal ol {
