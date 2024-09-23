@@ -46,21 +46,17 @@ Temporal:
 
 {{</ horizontal >}}
 
----
-
-## Applications in Various Fields
-
 {{< notes >}}
 Image registration is widely used across multiple disciplines.
 {{</ notes >}}
 
 - **Microscopy**: Aligning slices in a 3D stack, channels, runs, time points, tiles (stitching), and modalities.
-<br><br>
+
 - **Medical Imaging**: Viewpoints, stacks, normalization to an atlas, co-registering images from different modalities (e.g., MRI, CT).
-<br><br>
-- **Material Science**: Comparing material properties under varying conditions.
-<br><br>
+
 - **Earth Science**: Georeferencing, integration from different sensors, aligning satellite images for change detection.
+
+- **Material Science**: Comparing material properties under varying conditions.
 
 ---
 
