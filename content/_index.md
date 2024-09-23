@@ -80,6 +80,17 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 
 ---
 
+## Image Interpolation - Reason
+
+- When we transform an image, we need to estimate pixel values at the new coordinates.
+- If for example, you transform an image by up-scaling it: 
+
+![](img/grids.png)
+
+- Interpolation is the process of estimating pixel values at non-integer coordinates.
+
+---
+
 ## Image Interpolation - Common Types
 
 {{< notes >}}
@@ -109,6 +120,15 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 
 ![](img/interpolation_rotation.png)
 ![](img/interpolation_shearing.png)
+
+---
+
+## Image Interpolation - Anti-Aliasing in Down-Sampling
+
+![](img/antialias.png)
+
+- When down-sampling an image, aliasing artifacts can occur, thus applying anti-alising filters can help to reduce these artifacts.
+- But, anti-aliasing filters can also blur the image, so it's a trade-off between sharpness and aliasing artifacts.
 
 ---
 
