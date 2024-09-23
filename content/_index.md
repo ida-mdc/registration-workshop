@@ -17,7 +17,7 @@ In this workshop, we will explore fundamental concepts and practical techniques 
 
 <h4>Spatial alignment of two or more images.</h4>
  
-- In science, it's an essential  step for comparing or integrating data
+- It's an essential  step for comparing or integrating data in many scientific fields.
 
 
 {{< notes >}}
@@ -89,8 +89,7 @@ Introducing registration methods that combine both matching and transformation i
 ![](img/correlation_r0_s1.png)
 
 {{< notes >}}
-[https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/correlation_example.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/correlation_example.ipynb
+[Examples were generated using: example_notebooks/correlation_example.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/correlation_example.ipynb
 )
 {{</ notes >}}
 
@@ -113,8 +112,7 @@ Entropy is maximized when there is maximum uncertainty or randomness in the pixe
 Meaning that an image with a single pixel intensity value will have minimum entropy, and an image with a uniform distribution of pixel intensities will have maximum entropy.
 {{</ notes >}}
 
-- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
+- [Mutual Information implementation notebook: example_notebooks/mutual_information.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
 ) 
 
 ---
@@ -147,24 +145,17 @@ An example of applying a feature-based registration pipeline to align two images
 
 {{< horizontal >}}
 
-1. **Detecting Similarities**: identifying corresponding features
-   - **Feature Detection**
-     - Detect keypoints and their descriptors (e.g. using SIFT)
-   - **Feature Matching**
-     - Match features between images
+1. **Detecting Similarities**: 
+   - **Feature Detection:** Detect keypoints and their descriptors (e.g. using SIFT)
+   - **Feature Matching:** Match features between images to select keypoints to use.
 2. **Estimating and Applying Transformations**: one image is transformed in space to match the other
-    - **Transformation Estimation**
-      - Compute transformation matrix (e.g. affine) using matched keypoints
-    - **Warping**
-      - Apply transformation to align images
+    - **Transformation Estimation:** Compute transformation matrix (e.g. affine) using matched keypoints.
+    - **Warping:** Apply transformation to align images.
 
 <img src="img/sift_route.png" alt="sift keypoints and matches"/>
 
 {{</ horizontal >}}
-
-- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/sift_example.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/sift_example.ipynb
-) 
+- [SIFT based registration notebook: example_notebooks/sift_example.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/sift_example.ipynb) 
 
 {{< notes >}}
 SIFT can be robust and thus can be used for multimodal registration.
@@ -185,12 +176,11 @@ Deap learning based approaches can perform well on those tasks with minimal trai
 1. **Predefined Feature Detection**: e.g. pose estimation.
    - **Manual selection of features**
    - **Annotation of training data**
-   - **Model selection, training, and prediction**
-2. **Estimating and Applying Transformations**: All images are transformed in space to match a template image.
-    - **Transformation Estimation**
-      - Compute transformation matrix (e.g. affine) using matched keypoints
-    - **Warping**
-      - Apply transformation to align images
+   - **Deep learning landmark detection**
+     - Model selection 
+     - training 
+     - prediction of landmark locations on all images of the dataset
+2. **Estimating and Applying Transformations** using the detected landmarks.
 
 <img src="img/wing_landmarks.png" alt="wing landmarks model"/><img src="img/wing_registration.png" alt="wing landmarks model"/>
 
@@ -206,6 +196,9 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 ![](img/transformations.png)
 
+[Link to: example_notebooks/transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
+) 
+
 {{< notes >}}
 
 The type of transformation should be chosen based on the expected deformations in the images.  
@@ -218,16 +211,6 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 
 ---
 
-## Image Transformation Generation
-
-![](img/transformation_nb.png)
-
-- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
-) 
-
----
-
 ## Image Interpolation - Common Types
 
 {{< notes >}}
@@ -235,26 +218,14 @@ When you transform an image to a new space, you need to estimate the pixel value
 Interpolation is used to estimate pixel values at non-integer coordinates.
 {{</ notes >}}
 
-![](img/interpolation_functions.png)
-Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0
+{{< horizontal >}}
+![](img/interpolation_functions.png) 
 
 ![](img/interpolation_weights.png)
+{{</ horizontal >}}
 
----
-
-## Image Interpolation Example
-
-![](img/interpolation_rotation.png)
-![](img/interpolation_shearing.png)
-
----
-
-## Image Interpolation Notebook
-
-![](img/interpolation_nb.png)
-
-- [https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
-](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
+Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0  
+[Link to interpolation weights and examples notebook: example_notebooks/interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
 ) 
 
 {{< notes >}}
@@ -265,19 +236,24 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 
 ---
 
+## Image Interpolation Example
+
+![](img/interpolation_rotation.png)
+![](img/interpolation_shearing.png)
+
+---
+
 ## Challenges & Considerations
 
 {{< horizontal >}}
 
+- **Method Selection**:
+  - Match image type (e.g., multimodal) to appropriate method
+- **Transformation Type**:
+  - Fit transformation to deformation (e.g., rigid vs. non-rigid)
 - **Preprocessing**:
   - Denoising, intensity correction, rescaling, applying filters
   - In hard cases - Use extrinsic information (e.g., physical landmarks)
-- **Performance vs. Complexity**:
-  - Trade-off between accuracy and speed
-- **Transformation Type**:
-  - Fit transformation to deformation (e.g., rigid vs. non-rigid)
-- **Method Selection**:
-  - Match image type (e.g., multimodal) to appropriate method
 
 ![](img/edge_detection.png)
 
@@ -289,7 +265,7 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 
 {{< horizontal >}}
 
-## Image Registration Guidelines
+## Image Registration Guideline
 
 ![Image Registration Guideline](img/flowchart.png)
 
@@ -331,15 +307,14 @@ We will work through practical examples using Fiji/ImageJ and Python.
 
 ## Thank You!
 
-#### Thanks for participating. Please feel free to reach out with any questions.
+##### Thanks for participating. Please feel free to reach out with any questions.
 
-![](img/people/hi-support-staff.jpg)
-
-Resources I used to create this presentation:  
-- Deborah Schmidt - [https://ida-mdc.gitlab.io/workshops/3d-data-visualization/](https://ida-mdc.gitlab.io/workshops/3d-data-visualization/)
-- Erik Meijering - [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
-
+![](img/people/hi-support-staff.png)
 
 Contact: **ella.bahry at mdc-berlin.de**
+
+Presentation template: Deborah Schmidt - [https://ida-mdc.gitlab.io/workshops/3d-data-visualization/](https://ida-mdc.gitlab.io/workshops/3d-data-visualization/)
+
+
 
 

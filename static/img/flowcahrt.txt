@@ -1,24 +1,29 @@
 digraph ImageRegistrationGuideline {
     rankdir=TB;
-    node [shape=rectangle, style=rounded, fontsize=10, fontname="Helvetica"];
+    nodesep=0.1;
+    ranksep=0.1;
+    node [shape=rectangle, style=rounded, fontsize=12, fontname="Helvetica"];
+    
+    size="9,9.7"; // Width=8 inches, Height=10 inches
+    ratio=compress; // Adjust the ratio to fit the height
 
     // Start Node
     start [label="Start", shape=ellipse, style=filled, fillcolor=lightgreen];
 
     // Preprocessing Decision
-    preprocessing_check [label="Is preprocessing needed?", shape=diamond, style=filled, fillcolor=lightblue];
+    preprocessing_check [label="Is preprocessing needed?", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Preprocessing Steps
     preprocessing_steps [label="Correct Intensity, Resize, or Segment.."];
 
     // Deep Learning Decision
-    deep_learning_check [label="Do you have the necessary expertise,\ncomputational resources,\nand perhaps training data for Deep Learning?", shape=diamond, style=filled, fillcolor=lightblue];
+    deep_learning_check [label="Do you have the necessary expertise,\ncomputational resources,\nand perhaps training data for Deep Learning?", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Deep Learning Registration
     deep_learning_registration [label="Apply Deep Learning-Based Registration\n(e.g., VoxelMorph, DeepReg)", shape=ellipse, style=filled, fillcolor=lightgrey];
 
     // Step 1: Are the images very similar?
-    similarity_check [label="Are the images very similar?\n(Minimal transformation)", shape=diamond, style=filled, fillcolor=lightblue];
+    similarity_check [label="Are the images very similar?\n(Minimal transformation)", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Paths from similarity_check
     intensity_based [label="Use Intensity-Based Registration\n(e.g., Cross-Correlation)"];
@@ -27,10 +32,10 @@ digraph ImageRegistrationGuideline {
     retake_images [label="Retake Images with Extrinsic Landmarks\nor Improved Features", shape=ellipse, style=filled, fillcolor=lightgrey];
 
     // Transformation Type Decision
-    transformation_type [label="Select Transformation Type", shape=diamond, style=filled, fillcolor=lightblue];
+    transformation_type [label="Select Transformation Type", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Local Deformations Decision
-    local_deformations [label="Are local deformations present?", shape=diamond, style=filled, fillcolor=lightblue];
+    local_deformations [label="Are local deformations present?", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Transformation Methods
     rigid_transformation [label="Calculate and Apply Rigid, Affine, or Perspective Transformation"];
@@ -95,6 +100,6 @@ digraph ImageRegistrationGuideline {
     retake_images -> final_step [style=invis]; // Invisible edge to maintain graph structure
 
     // Styling for Clarity
-    edge [fontsize=9, fontname="Helvetica"];
-    node [fontsize=10, fontname="Helvetica"];
+    edge [fontsize=12, fontname="Helvetica"];
+    node [fontsize=12, fontname="Helvetica"];
 }
