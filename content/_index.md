@@ -69,9 +69,9 @@ Image registration is widely used across multiple disciplines.
 ) 
 
 {{< notes >}}
-
 The type of transformation should be chosen based on the expected deformations in the images.  
-It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).
+It's common to apply a more rough transformation first (e.g. affine), followed by an elastic transformation to correct for local deformations (e.g. TPS).  
+But more is not always better, as more complex transformations can lead to overfitting and with each transformation some errors are introduced (due to interpolation).
 
 The transformation matrix can also be used to warp other channels or annotation data such as segmentation labels.  
 
