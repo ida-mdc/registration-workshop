@@ -1,6 +1,6 @@
 ---
 title: "Image Registration Workshop"
-date: 2024-09-23
+date: 2024-09-24
 draft: false
 layout: workshop
 author: Ella Bahry
