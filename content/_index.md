@@ -63,7 +63,13 @@ Image registration is widely used across multiple disciplines.
 
 ## Image Transformation Types
 
+{{< horizontal >}}
+
 ![](img/transformations.png)
+
+![](img/affine.png)
+
+{{</ horizontal >}}
 
 [Link to: example_notebooks/transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
 ) 
@@ -149,7 +155,7 @@ Introducing registration methods that combine both matching and transformation i
 
 ---
 
-## Example Technique: Correlation Coefficient
+## Technique: Intensity Based (Correlation Coefficient)
 
 ![](img/correlation_r45_s1.5.png)
 ![](img/correlation_r10_s1.1.png)
@@ -163,7 +169,7 @@ Introducing registration methods that combine both matching and transformation i
 
 ---
 
-## Example Technique: Mutual Information
+## Technique: Mutual Information
 
 {{< horizontal >}}
 
@@ -196,7 +202,7 @@ two main steps:
 1. **Detecting and matching similarities**: identifying corresponding regions or features 
    - **Feature-Based Registration** (SIFT, SURT, ORB, BRISK, FAST)
    - **Segmentation-Based Registration**
-   - **model Fitting**
+   - **Model Fitting**
    - **Graph-Based Methods**
 2. **Estimating and applying transformations**: Finding and applying the optimal transformation
 
@@ -206,7 +212,7 @@ Estimating and applying transformations will be discussed in more detail in the 
 
 ---
 
-## Example Pipeline: Feature-Based Registration
+## Technique: Feature-Based Registration (SIFT)
 
 {{< notes >}}
 An example of applying a feature-based registration pipeline to align two images from different modalities.
@@ -232,7 +238,7 @@ SIFT can be robust and thus can be used for multimodal registration.
 
 ---
 
-## Example Pipeline: Model Based Feature-Based Registration
+## Technique: Model Based (Pose Estimation)
 
 {{< notes >}}
 In cases where many images need to be registered to the same space and pre-known features can be identified, a model-based registration pipeline can be applied.
@@ -315,23 +321,19 @@ Overview of common tools, libraries, and plugins for image registration.
 
 ---
 
-## Hands-On Session
-
-{{< notes >}}
-We will work through practical examples using Fiji/ImageJ and Python.
-{{</ notes >}}
-
----
-
 ## Thank You!
 
 ##### Thanks for participating. Please feel free to reach out with any questions.
 
+{{< horizontal >}}
 ![](img/people/hi-support-staff.png)
 
-Contact: **ella.bahry at mdc-berlin.de**
+![](img/logos/hi.png)
+{{</ horizontal >}}
 
-Presentation template: Deborah Schmidt - [https://ida-mdc.gitlab.io/workshops/3d-data-visualization/](https://ida-mdc.gitlab.io/workshops/3d-data-visualization/)
+Contact:&nbsp;&nbsp;&nbsp;&nbsp; **ella.bahry@mdc-berlin.de**&nbsp;&nbsp;&nbsp;&nbsp;**support@helmholtz-imaging.de**
+
+Presentation template: Deborah Schmidt - [3d Data Visualization Workshop](https://ida-mdc.gitlab.io/workshops/3d-data-visualization/)
 
 
 
