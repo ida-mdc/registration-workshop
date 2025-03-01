@@ -20,7 +20,7 @@ with open(args.config, 'r') as f:
 fixed_image_path    = config["fixed_image_path"]
 moving_image_path   = config["moving_image_path"]
 downsample_factor   = config["downsample_factor"]
-output_dir          = config.get("output_dir", "output")
+output_dir          = config.get("output_dir_prefix", "output")
 
 n_resolutions       = config["n_resolutions"]
 max_iterations      = config["max_iterations"]
@@ -29,6 +29,7 @@ initial_step_length = config["initial_step_length"]
 min_step_length     = config["min_step_length"]
 num_spatial_samples = config["num_spatial_samples"]
 
+output_dir = f'{output_dir}_ds{downsample_factor}_r{n_resolutions}_i{max_iterations}_m{metric}_is{initial_step_length}_ms{min_step_length}_ss{num_spatial_samples}'
 os.makedirs(output_dir, exist_ok=True)
 
 # --- Function definitions ---

@@ -15,7 +15,7 @@
 fixed_image_path: "fixed_image.tif"
 moving_image_path: "moving_image.tif"
 downsample_factor: 1
-output_dir: "output"
+output_dir_prefix: "output"
 n_resolutions: 4
 max_iterations: 200000
 metric: "AdvancedMeanSquares"
