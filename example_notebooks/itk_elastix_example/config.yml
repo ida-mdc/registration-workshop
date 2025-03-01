@@ -1,0 +1,25 @@
+# Elastix Registration Configuration
+# fixed_image_path: Path to the fixed image.
+# moving_image_path: Path to the moving image.
+# downsample_factor: Factor to downsample the images (e.g., 2 means images are reduced to half dimensions).
+# output_dir: Directory where output images are saved.
+#
+# Elastix Registration Parameters:
+# n_resolutions: Number of resolution levels; more levels allow coarse-to-fine alignment.
+# max_iterations: Maximum iterations per resolution level; higher values improve convergence.
+# metric: Similarity measure for registration; 'AdvancedMeanSquares' is used for mono-modal images.
+# initial_step_length: Initial optimizer step size; larger values speed up early stages.
+# min_step_length: Smallest allowed step size; enables finer adjustments.
+# num_spatial_samples: Number of pixels used to compute the metric; higher numbers improve accuracy.
+
+fixed_image_path: "fixed_image.tif"
+moving_image_path: "moving_image.tif"
+downsample_factor: 1
+output_dir: "output"
+n_resolutions: 4
+max_iterations: 200000
+metric: "AdvancedMeanSquares"
+initial_step_length: 10.0
+min_step_length: 0.1
+num_spatial_samples: 1024
+
