@@ -426,7 +426,7 @@ Overview of common tools, libraries, and plugins for image registration.
   - **OpenCV** (C++), **scikit-image**
 - **[ITKElastix](https://elastix.dev/index.php)** (C++) is a powerful open-source tool (standalone or as a python package) for  intensity-based registration.
 - **[ANTs](https://github.com/ANTsX/ANTs)** Advanced normalization tools (C++) for intensity-based registration - great for local deformations and 3D.
-- **[VoxelMorph](https://github.com/voxelmorph/voxelmorph)** Deep Learning based image registration framework (Python, TensorFlow/Pycharm).
+- **[VoxelMorph](https://github.com/voxelmorph/voxelmorph)** Deep Learning based image registration framework (Python, TensorFlow/Pytorch).
 - **[DeepLabCut](https://github.com/DeepLabCut/DeepLabCut)** Open-source deep learning based pose estimation and model based feature detection (and tracking).
 
 <br>
