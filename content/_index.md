@@ -7,13 +7,34 @@ author: Ella Bahry
 cover: img/registration.png
 ---
 
+## Helmholtz Imaging
+{{< unlisted >}}
+
+##### Helmholtz Imaging is here for you with support units at 3 centers
+{{< figure src="img/pipeline.png" >}}
+
+{{< center >}}
+{{< logos >}}img/logos/desy.png
+img/logos/dkfz.png
+img/logos/mdc.png{{< /logos >}}
+{{< /center >}}
+
+<br/>
+{{< center >}}
+
+**support@helmholtz-imaging.de**
+{{< /center >}}
+
+
+---
+
 ## What is Image Registration?
 
 {{< notes >}}
 In this workshop, we will explore fundamental concepts and practical techniques for image registration, focusing on applications in microscopy, material science, and earth science.
 {{</ notes >}}
 
-![](img/registration_big.png)
+<img src="img/registration_big.png" alt="Registration" style="height: 500px; width: auto;">
 
 <h4>Spatial alignment of two or more images.</h4>
  
@@ -60,18 +81,25 @@ Image registration is widely used across multiple disciplines.
 
 ---
 
+## Image Registration Aim
+
+![](img/fixed_moving.png)
+
+![](img/fixed_moving_registered.png)
+
+---
 
 ## Image Transformation Types
 
 {{< horizontal >}}
 
-![](img/transformations.png)
+<img src="img/transformations.png" style="height: 900px; width: auto;">
 
-![](img/affine.png)
+<img src="img/affine.png" style="height: 400px; width: auto;">
 
 {{</ horizontal >}}
 
-[Link to: example_notebooks/transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
+[Link: example_notebooks/2_transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
 ) 
 
 {{< notes >}}
@@ -91,27 +119,29 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 - When we transform an image, we need to estimate pixel values at the new coordinates.
 - If for example, you transform an image by up-scaling it: 
 
-![](img/grids.png)
+<img src="img/grids.png" style="height: 500px; width: auto;">
 
-- Interpolation is the process of estimating pixel values at non-integer coordinates.
+- Interpolation is the process of estimating pixel values from non-integer coordinates.
 
 ---
 
 ## Image Interpolation - Common Types
+
+{{< unlisted >}}
 
 {{< notes >}}
 When you transform an image to a new space, you need to estimate the pixel values at the new locations.
 Interpolation is used to estimate pixel values at non-integer coordinates.
 {{</ notes >}}
 
-{{< horizontal >}}
-![](img/interpolation_functions.png) 
-
-![](img/interpolation_weights.png)
-{{</ horizontal >}}
+{{< center >}}
+<img src="img/interpolation_functions.jpg" style="height: 500px; width: auto;">
+<br>
+<img src="img/interpolation_weights.png" style="height: 450px; width: auto;">
+{{< /center >}}
 
 Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0  
-[Link to interpolation weights and examples notebook: example_notebooks/interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
+[Link to interpolation weights and examples notebook: example_notebooks/3_interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
 ) 
 
 {{< notes >}}
@@ -123,39 +153,76 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 ---
 
 ## Image Interpolation Example
+{{< unlisted >}}
 
-![](img/interpolation_rotation.png)
-![](img/interpolation_shearing.png)
+<img src="img/interpolation_rotation.png" style="height: 500px; width: auto;">
+<img src="img/interpolation_shearing.png" style="height: 500px; width: auto;">
 
 ---
 
 ## Image Interpolation - Anti-Aliasing in Down-Sampling
+{{< unlisted >}}
 
-![](img/antialias.png)
+<img src="img/antialias.png" style="height: 450px; width: auto;">
 
 - When down-sampling an image, aliasing artifacts can occur, thus applying anti-alising filters can help to reduce these artifacts.
 - But, anti-aliasing filters can also blur the image, so it's a trade-off between sharpness and aliasing artifacts.
 
 ---
 
+## Image Registration Techniques - Categories
+
+{{< horizontal >}}
+
+<div>
+<h4>Integrated Methods:</h4>
+<p>One process to find similarity measurement and estimate the transformation.</p>
+</div>
+
+<div>
+<h4>Two-Step Methods:</h4> 
+<p>A process into two distinct steps: 
+<p> 1. feature detection/matching 
+<p> 2. transformation estimation/application</p>
+</div>
+
+<div>
+<h4>Deep Learning-Based Methods:</h4> 
+<p>Utilize neural networks to learn complex patterns for registration tasks.</p>
+</div>
+
+{{</ horizontal >}}
+
+---
+
 ## Integrated Image Registration Techniques
+
+{{< unlisted >}}
 
 {{< notes >}}
 Introducing registration methods that combine both matching and transformation into one smooth process, simplifying image alignment. 
 {{</ notes >}}
 
+<br/><br/>
+
 - **Intensity-Based Registration**
   - Iterative process that optimizes aligned pixel intensity similarities (e.g. **correlation coefficient** or **MSE**).
+  
+<br/>
+
 - **Mutual Information-Based Registration**
   - Iteratively aligns multimodal images by maximizing the statistical relationship between them.
+  
+<br/>
+
 - **Frequency Domain Methods**
   - Transforms images into the Fourier space to compute alignment transformations.
-- **Deep Learning-Based Registration**
-  - Uses neural networks to predict transformations from image data, learning complex patterns.
 
 ---
 
 ## Technique: Intensity Based (Correlation Coefficient)
+
+{{< unlisted >}}
 
 ![](img/correlation_r45_s1.5.png)
 ![](img/correlation_r10_s1.1.png)
@@ -170,6 +237,8 @@ Introducing registration methods that combine both matching and transformation i
 ---
 
 ## Technique: Mutual Information
+
+{{< unlisted >}}
 
 {{< horizontal >}}
 
@@ -192,7 +261,29 @@ Meaning that an image with a single pixel intensity value will have minimum entr
 
 ---
 
+## ITK / ITKElastix - Common tool
+
+{{< unlisted >}}
+
+- **Elastix / ITKElastix** is a powerful open-source tool for intensity-based image registration, widely used in medical imaging and other fields.
+  - It provides a flexible framework for various registration tasks, supporting multiple transformation models and similarity metrics.
+  - ITKElastix has a Python interface. ITK + Elastix are C++ native.
+  - [ITKElastix toy example: example_notebooks/6_itkelastix_toy_tutorial.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/6_itkelastix_toy_tutorial.ipynb)
+- **ANTs** is another popular tool (ITK based) for intensity-based registration, known for its advanced algorithms and versatility in handling different image modalities.
+  - It's especially useful for 3D and elastic deformation registration tasks.
+  - Originally developed for neuroimaging applications but applicable to other domains as well.
+  - Python / R / command line interface.
+
+<br/><br/><br/><br/>
+
+- [ITKElastix link: github.com/InsightSoftwareConsortium/ITKElastix](https://github.com/InsightSoftwareConsortium/ITKElastix)
+- [ANTs link: github.com/ANTsX/ANTs](https://github.com/ANTsX/ANTs)
+
+---
+
 <h2>2 Step Techniques - Feature Detection & Transformation</h2>
+
+{{< unlisted >}}
 
 {{< notes >}}
  An overview of common methods used in image registration, highlighting the two main steps involved.
@@ -213,6 +304,8 @@ Estimating and applying transformations will be discussed in more detail in the 
 ---
 
 ## Technique: Feature-Based Registration (SIFT)
+
+{{< unlisted >}}
 
 {{< notes >}}
 An example of applying a feature-based registration pipeline to align two images from different modalities.
@@ -239,6 +332,8 @@ SIFT can be robust and thus can be used for multimodal registration.
 ---
 
 ## Technique: Model Based (Pose Estimation)
+
+{{< unlisted >}}
 
 {{< notes >}}
 In cases where many images need to be registered to the same space and pre-known features can be identified, a model-based registration pipeline can be applied.
@@ -267,6 +362,31 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 ---
 
+## Deep Learning Based Image Registration
+
+{{< unlisted >}}
+
+- unlike some other vision tasks, deep learning has not completely supplanted classical methods for registration.
+- However, deep learning based methods can learn complex patterns and deformations, making them suitable for challenging registration tasks and shine in speed and in leveraging training data.
+
+<h4>VoxelMorph</h4>
+
+{{< horizontal >}}
+
+![](img/voxelmorph.png)
+
+- Uses CNNs to learn spatial transformations between images (2D/3D)
+- Image similarity loss + smooth transformation regularization
+- Unsupervised. semi-supervised training with anatomical labels
+- Training (unsupervised) is still needed - so dataset can't be small
+- Offers both affine and elastic registration
+- Very fast with good interpretability
+- Expected user level is intermediate
+
+{{</ horizontal >}}
+
+---
+
 <h2>Challenges & Considerations</h2>
 
 {{< horizontal >}}
@@ -287,17 +407,14 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 ---
 
-{{< horizontal >}}
-
 ## Image Registration Guideline
 
-![Image Registration Guideline](img/flowchart.png)
-
-{{</ horizontal >}}
+<br/><br/>
+![](img/flowchart.png)
 
 ---
 
-## Software Tools for Image Registration
+## Summary of Software Tools for Image Registration
 
 {{< notes >}}
 Overview of common tools, libraries, and plugins for image registration.
@@ -307,10 +424,10 @@ Overview of common tools, libraries, and plugins for image registration.
   - Popular plugins: **Feature Extraction**, **Warpy** (QPath), **TrakEM2**, **Register Virtual Stack Slices**
 - **Python Libraries**
   - **OpenCV** (C++), **scikit-image**
-- **[Elastix](https://elastix.dev/index.php)**
-  - ITKElastix (C++) is a powerful open-source tool (standalone or as a python package) for  intensity-based registration.
-- **[DeepLabCut](https://github.com/DeepLabCut/DeepLabCut)**
-  - Open-source deep learning based pose estimation and model based feature detection (and tracking).
+- **[ITKElastix](https://elastix.dev/index.php)** (C++) is a powerful open-source tool (standalone or as a python package) for  intensity-based registration.
+- **[ANTs](https://github.com/ANTsX/ANTs)** Advanced normalization tools (C++) for intensity-based registration - great for local deformations and 3D.
+- **[VoxelMorph](https://github.com/voxelmorph/voxelmorph)** Deep Learning based image registration framework (Python, TensorFlow/Pycharm).
+- **[DeepLabCut](https://github.com/DeepLabCut/DeepLabCut)** Open-source deep learning based pose estimation and model based feature detection (and tracking).
 
 <br>
 
@@ -323,18 +440,21 @@ Overview of common tools, libraries, and plugins for image registration.
 
 ## Thank You!
 
-##### Thanks for participating. Please feel free to reach out with any questions.
+{{< unlisted >}}
+
+**Thanks for participating. Please feel free to reach out with any questions.**
 
 {{< horizontal >}}
-![](img/people/hi-support-staff.png)
+![](img/people/hi-staff.png)
 
 ![](img/logos/hi.png)
 {{</ horizontal >}}
 
 Contact:&nbsp;&nbsp;&nbsp;&nbsp; **ella.bahry@mdc-berlin.de**&nbsp;&nbsp;&nbsp;&nbsp;**support@helmholtz-imaging.de**
 
-Presentation template: Deborah Schmidt - [3d Data Visualization Workshop](https://ida-mdc.gitlab.io/workshops/3d-data-visualization/)
+Workshop available on: [github.com/ida-mdc/registration-workshop](https://github.com/ida-mdc/registration-workshop)
 
+Thanks to Deborah Schmidt for the template!
 
 
 
