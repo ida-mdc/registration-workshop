@@ -1,51 +1,45 @@
 digraph ImageRegistrationGuideline {
-    rankdir=TB;
+    rankdir=LR;
     nodesep=0.1;
     ranksep=0.1;
-    node [shape=rectangle, style=rounded, fontsize=12, fontname="Helvetica"];
+    node [shape=rectangle, style=rounded, fontsize=16, fontname="Helvetica"];
     
     size="9,9.7"; // Width=8 inches, Height=10 inches
     ratio=compress; // Adjust the ratio to fit the height
 
-    // Start Node
-    start [label="Start", shape=ellipse, style=filled, fillcolor=lightgreen];
-
     // Preprocessing Decision
-    preprocessing_check [label="Is preprocessing needed?", shape=sqaure, style=filled, fillcolor=lightblue];
+    preprocessing_check [label="Is \npreprocessing \nneeded?", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Preprocessing Steps
-    preprocessing_steps [label="Correct Intensity, Resize, or Segment.."];
+    preprocessing_steps [label="Correct \nIntensity, \nResize, \nor \nSegment.."];
 
     // Deep Learning Decision
-    deep_learning_check [label="Do you have the necessary expertise,\ncomputational resources,\nand perhaps training data for Deep Learning?", shape=sqaure, style=filled, fillcolor=lightblue];
+    deep_learning_check [label="Do you \nhave the \nnecessary \nexpertise,\ncomputational \nresources,\nand perhaps\ntraining data\nfor\nDeep\nLearning?", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Deep Learning Registration
-    deep_learning_registration [label="Apply Deep Learning-Based Registration\n(e.g., VoxelMorph, DeepReg)", shape=ellipse, style=filled, fillcolor=lightgrey];
+    deep_learning_registration [label="Apply \nDeep \Learning \nBased \nRegistration\n(e.g., \nVoxelMorph, \nDeepReg)", shape=ellipse, style=filled, fillcolor=lightgrey];
 
     // Step 1: Are the images very similar?
-    similarity_check [label="Are the images very similar?\n(Minimal transformation)", shape=sqaure, style=filled, fillcolor=lightblue];
+    similarity_check [label="Are the \nimages \nvery \nsimilar?\n(Minimal \ntransformation)", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Paths from similarity_check
-    intensity_based [label="Use Intensity-Based Registration\n(e.g., Cross-Correlation)"];
-    mutual_information [label="Use Histogram-Based Registration\n(e.g., Mutual Information)"];
-    feature_based [label="Use Feature-Based Methods"];
-    retake_images [label="Retake Images with Extrinsic Landmarks\nor Improved Features", shape=ellipse, style=filled, fillcolor=lightgrey];
+    intensity_based [label="Use \nIntensity-Based \nRegistration\n(e.g., \nCross-Correlation)"];
+    mutual_information [label="\nUse \nHistogram\nBased \nRegistration\n(e.g., \nMutual\nInformation)"];
+    feature_based [label="Use \nFeature\nBased \nMethods"];
+    retake_images [label="Retake \nImages \nwith \nExtrinsic \nLandmarks\nor \nImproved \nFeatures", shape=ellipse, style=filled, fillcolor=lightgrey];
 
     // Transformation Type Decision
-    transformation_type [label="Select Transformation Type", shape=sqaure, style=filled, fillcolor=lightblue];
+    transformation_type [label="Select \nTransformation \nType", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Local Deformations Decision
-    local_deformations [label="Are local deformations present?", shape=sqaure, style=filled, fillcolor=lightblue];
+    local_deformations [label="Are local \ndeformations \npresent?", shape=sqaure, style=filled, fillcolor=lightblue];
 
     // Transformation Methods
-    rigid_transformation [label="Calculate and Apply Rigid, Affine, or Perspective Transformation"];
-    elastic_transformation [label="Calculate and Apply Elastic Transformation\n(e.g., B-Splines, Thin-Plate Splines)"];
+    rigid_transformation [label="Calculate \nand \nApply \nRigid, \nAffine, or \nPerspective \nTransformation"];
+    elastic_transformation [label="Calculate \nand Apply \nElastic \nTransformation\n(e.g., \nB-Splines, \nTPS)"];
 
     // Final Step
-    final_step [label="Apply Same Transformation to Additional Images\nfrom Source Space", shape=ellipse, style=filled, fillcolor=lightgrey];
-
-    // Linking Start to Preprocessing Check
-    start -> preprocessing_check;
+    final_step [label="Apply \nSame \nTransformation \nto \nAdditional \nImages\nfrom \nSource \nSpace", shape=ellipse, style=filled, fillcolor=lightgrey];
 
     // Branching from Preprocessing Check
     preprocessing_check -> preprocessing_steps [label="Yes"];
@@ -63,8 +57,8 @@ digraph ImageRegistrationGuideline {
 
     // Branching from Similarity Check
     similarity_check -> intensity_based [label="Yes"];
-    similarity_check -> mutual_information [label="Yes/Somehow"];
-    similarity_check -> feature_based [label="Yes/Somehow/No"];
+    similarity_check -> mutual_information [label="Yes/\nSomehow"];
+    similarity_check -> feature_based [label="Yes/\nSomehow/\nNo"];
     similarity_check -> retake_images [label="Not at all"];
 
     // Linking Registration Methods to Transformation Type
@@ -73,15 +67,15 @@ digraph ImageRegistrationGuideline {
 
     // Split Feature-Based Methods
     feature_based -> classic_feature_based [label="Image Features"];
-    classic_feature_based [label="Classic Feature-Based Methods\n(e.g., SIFT, ORB, SURF)"];
+    classic_feature_based [label="Classic \nFeature\nBased \nMethods\n(e.g., \nSIFT, \nORB, \nSURF)"];
     classic_feature_based -> transformation_type;
     
     feature_based -> pose_estimation_based [label="Model Based"];
-    pose_estimation_based [label="Model-Based Feature Detection\n(e.g., Pose Estimation via DeepLabCut)"];
+    pose_estimation_based [label="Model-Based\nFeature\nDetection\n(e.g., \nPose \nEstimation \nvia \nDeepLabCut)"];
     pose_estimation_based -> transformation_type;
     
     // Decision on Transformation Type
-    transformation_type -> rigid_transformation [label="Global Deformations"];
+    transformation_type -> rigid_transformation [label="Global\nDeformations"];
 
     // Linking to Local Deformations Check
     rigid_transformation -> local_deformations;
