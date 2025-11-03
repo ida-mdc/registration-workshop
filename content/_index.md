@@ -99,7 +99,7 @@ Image registration is widely used across multiple disciplines.
 
 {{</ horizontal >}}
 
-[Link: example_notebooks/2_transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/transformation_examples.ipynb
+[Link: example_notebooks/2_transformation_examples.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/2_transformation_examples.ipynb
 ) 
 
 {{< notes >}}
@@ -141,7 +141,7 @@ Interpolation is used to estimate pixel values at non-integer coordinates.
 {{< /center >}}
 
 Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC BY-SA 4.0  
-[Link to interpolation weights and examples notebook: example_notebooks/3_interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/interpolation.ipynb
+[Link to interpolation weights and examples notebook: example_notebooks/3_interpolation.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/3_interpolation.ipynb
 ) 
 
 {{< notes >}}
@@ -230,7 +230,7 @@ Introducing registration methods that combine both matching and transformation i
 ![](img/correlation_r0_s1.png)
 
 {{< notes >}}
-[Examples were generated using: example_notebooks/correlation_example.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/correlation_example.ipynb
+[Examples were generated using: example_notebooks/4_correlation_example.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/4_correlation_example.ipynb
 )
 {{</ notes >}}
 
@@ -256,7 +256,7 @@ Entropy is maximized when there is maximum uncertainty or randomness in the pixe
 Meaning that an image with a single pixel intensity value will have minimum entropy, and an image with a uniform distribution of pixel intensities will have maximum entropy.
 {{</ notes >}}
 
-- [Mutual Information implementation notebook: example_notebooks/mutual_information.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/mutual_information.ipynb
+- [Mutual Information implementation notebook: example_notebooks/5_mutual_information.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/5_mutual_information.ipynb
 ) 
 
 ---
@@ -323,7 +323,7 @@ An example of applying a feature-based registration pipeline to align two images
 <img src="img/sift_route.png" alt="sift keypoints and matches"/>
 
 {{</ horizontal >}}
-- [SIFT based registration notebook: example_notebooks/sift_example.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/sift_example.ipynb) 
+- [SIFT based registration notebook: example_notebooks/7_sift_example.ipynb](https://github.com/bellonet/image-registration-workshop/blob/main/example_notebooks/7_sift_example.ipynb) 
 
 {{< notes >}}
 SIFT can be robust and thus can be used for multimodal registration.
