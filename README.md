@@ -3,3 +3,6 @@ https://ida-mdc.github.io/registration-workshop/
 
 Video recording is on:  
 https://www.youtube.com/watch?v=zDaCVSXMIm4
+
+License:
+This work is licensed under a MIT license. See the LICENSE file for details.
