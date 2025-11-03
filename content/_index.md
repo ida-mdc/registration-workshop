@@ -458,7 +458,7 @@ License: CC BY 4.0
 Thanks to Deborah Schmidt for the template!
 
 {{< notes >}}
-This workshop content (slides, non-code images, text) is released under a Creative Commons Attribution 4.0 International License (CC BY 4.0).  
+This workshop content (slides, non-code images, text) is released under a Creative Commons Attribution 4.0 International License (CC BY 4.0).    
 What this means for you:  
 You are free to: Share, copy, redistribute, and adapt (remix, transform, and build upon) the material for any purpose, even commercial use.  
 You only need to do one thing (Attribution): You must give appropriate credit to the original creator ("Ella Bahry/Helmholtz Imaging") by including a link to the license and indicating if any changes were made.
