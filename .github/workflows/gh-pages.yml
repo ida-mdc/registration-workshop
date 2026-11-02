@@ -8,6 +8,8 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest  # Use GitHub-hosted runner
+    permissions:
+      contents: write  # Needed to push to the gh-pages branch
 
     steps:
       - name: Checkout Repository
@@ -18,7 +20,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.111.3'  #'latest'  # Specify Hugo version
+          hugo-version: '0.147.0'  #'latest'  # Specify Hugo version
           extended: false  # Set to true if using extended features
 
       - name: Build Site
