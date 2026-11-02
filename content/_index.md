@@ -407,6 +407,26 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 ---
 
+## Registration Validation
+
+- **Visual inspection first**: overlay the two images with different colormaps and partial opacity, or flip between the fixed and the registered image. Zoom in on small structures.
+- **The optimized metric is not a verdict**: validating with the same metric used for the alignment is misleading, since the method already optimized it. Absolute values say little, but comparing runs or steps (before vs. after, affine vs. elastic) is informative.
+- **Red flags without ground truth**: the image collapsed or blew up (its area changed massively), almost no overlap is left between registered and target, or (feature-based) only a few matched points, all clustered in one region.
+- **Create your own ground truth**: click matching points in both images by hand. Measure their distance after registration. Don't use the same points for the registration itself.
+- **Elastic transformations**: look at the deformation (grid or field). It should be smooth, without folds or extreme stretching.
+- **Is the error acceptable for your use case?** Decide what accuracy your analysis needs.
+
+{{< notes >}}
+Almost no one has ground truth for scientific images, so evaluation means collecting evidence, not getting a number.  
+Studies show that image similarity and tissue overlap are unreliable stand-ins for accuracy (Rohlfing 2012, IEEE TMI), and there is no agreed threshold separating a good from a poor deformable result.  
+Hand-clicked landmarks are the cheapest ground truth, and they are independent of the registration metric. They must be different points from the ones used to compute the transformation.  
+The red flags are cheap numbers: area of the warped image vs. the original (collapse or explosion), fraction of the registered image inside the target, number of matched inliers and how widely they are spread. They catch impossible results, not subtle errors.  
+A local similarity map (e.g. mutual information computed in sliding windows) can point to regions worth inspecting, but it should not be used to label regions as failed.  
+Folding of an elastic transformation can be checked numerically with the Jacobian determinant of the deformation (zero or negative means folded).
+{{</ notes >}}
+
+---
+
 ## Image Registration Guideline
 
 <br/><br/>
