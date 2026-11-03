@@ -141,10 +141,7 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 ## Image Interpolation - Anti-Aliasing in Down-Sampling
 {{< unlisted >}}
 
-<img src="img/antialias.png" style="height: 450px; width: auto;">
-
-- When down-sampling an image, aliasing artifacts can occur, thus applying anti-alising filters can help to reduce these artifacts.
-- But, anti-aliasing filters can also blur the image, so it's a trade-off between sharpness and aliasing artifacts.
+<img src="img/antialias.png" style="height: 500px; width: auto;">
 
 ---
 
