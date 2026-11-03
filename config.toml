@@ -1,6 +1,7 @@
 baseURL = "https://ida-mdc.github.io/registration-workshop/"
 languageCode = "en-us"
 title = "Image Registration Workshop"
+timeZone = "Europe/Berlin"
 
 [markup]
   [markup.goldmark]

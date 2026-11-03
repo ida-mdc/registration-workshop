@@ -1,6 +1,6 @@
 ---
 title: "Image Registration Workshop"
-date: 2025-10-29
+date: 2026-11-04
 draft: false
 layout: workshop
 author: Ella Bahry
@@ -10,13 +10,14 @@ cover: img/registration.png
 ## Helmholtz Imaging
 {{< unlisted >}}
 
-##### Helmholtz Imaging is here for you with support units at 3 centers
+##### Helmholtz Imaging is here for you with support units at 4 centers
 {{< figure src="img/pipeline.png" >}}
 
 {{< center >}}
 {{< logos >}}img/logos/desy.png
 img/logos/dkfz.png
-img/logos/mdc.png{{< /logos >}}
+img/logos/mdc.png
+img/logos/ufz.png{{< /logos >}}
 {{< /center >}}
 
 <br/>
@@ -34,7 +35,7 @@ img/logos/mdc.png{{< /logos >}}
 In this workshop, we will explore fundamental concepts and practical techniques for image registration, focusing on applications in microscopy, material science, and earth science.
 {{</ notes >}}
 
-<img src="img/registration_big.png" alt="Registration" style="height: 500px; width: auto;">
+<img src="img/registration_big.png" alt="Registration" style="height: 700px; width: auto; max-height: none; max-width: none;">
 
 <h4>Spatial alignment of two or more images.</h4>
  
@@ -49,7 +50,7 @@ Image registration is the process of aligning multiple datasets into a common co
 
 ## Common needs in research
 
-<img src="img/common_needs.png" style="width: 100%; height: auto;">
+<img src="img/common_needs.png" style="height: 66vh; width: auto; max-height: none; max-width: none; position: relative; top: 5vh;">
 
 ---
 
@@ -88,7 +89,7 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 
 ## Local Deformations - Common Approaches
 
-<img src="img/local_deformations.png" style="width: 100%; height: auto;">
+<img src="img/local_deformations.png" style="width: 94%; height: auto; position: relative; top: 4vh;">
 
 ---
 
@@ -141,17 +142,17 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 ## Image Interpolation - Anti-Aliasing in Down-Sampling
 {{< unlisted >}}
 
-<img src="img/antialias.png" style="height: 500px; width: auto;">
+<img src="img/antialias.png" style="height: 60vh; width: auto; max-height: none; max-width: none; position: relative; top: 1vh;">
 
 ---
 
 ## Image Registration Techniques - Categories
 
-<img src="img/categories.png" style="width: 100%; height: auto;">
+<img src="img/categories.png" style="width: 88%; height: auto;">
 
 ---
 
-## Integrated Image Registration Techniques <img src="img/icon_integrated.png" style="float: right; height: 60px !important; width: auto !important; margin: 0 !important;">
+## Integrated Image Registration Techniques <img src="img/icon_integrated.png" style="float: right; height: 85px !important; width: auto !important; margin: 0 !important;">
 
 {{< unlisted >}}
 
@@ -196,14 +197,17 @@ Introducing registration methods that combine both matching and transformation i
 
 {{< unlisted >}}
 
+<div style="height: 4vh;"></div>
+
 {{< horizontal >}}
 
-<img src="img/joint_histogram_iterative.gif" alt="Mutual Information iterations"/>
+<div style="flex: none; width: 49vw;"><img src="img/joint_histogram_iterative.gif" alt="Mutual Information iterations" style="width: 100%; max-width: none; max-height: none;"/></div>
 
-![](img/hist.png)
-![](img/mutual_information_equation.png)
+<div style="flex: none; width: 22vw;"><img src="img/hist.png" style="width: 100%; max-width: none; max-height: none;"/><img src="img/mutual_information_equation.png" style="width: 100%; max-width: none; max-height: none;"/></div>
 
 {{</ horizontal >}}
+
+<div style="height: 4vh;"></div>
 
 - Looking at the equation, the more structure we have in the joint histogram, the lower its entropy, and thus the mutual information is higher.
 
@@ -242,16 +246,15 @@ Meaning that an image with a single pixel intensity value will have minimum entr
 
 {{< unlisted >}}
 
-<img src="img/phase_corr.png" style="width: 100%; height: auto;">
+<img src="img/phase_corr.png" style="width: 62%; height: auto;">
 
-- Phase correlation does step 3 for **every possible shift at once** (using the Fourier transform), so it is fast. The best match is the shift. No optimizer, no starting guess.
-- **Used for:** stitching overlapping microscopy tiles (e.g. Fiji, BigStitcher).
-- **Limits:** needs overlap and similar-looking images. Fails on repetitive or low-texture regions.
-- Rotation and scale are possible too, by first remapping to log-polar coordinates (Fourier-Mellin).
+- Checks **every shift at once** (via the Fourier transform): fast, no optimizer, no starting point.
+- **Works for** similar or overlapping images, e.g. stitching tiles (BigStitcher). Fails on repetitive or low-texture regions.
+- Rotation and scale: possible too, via log-polar remapping (Fourier-Mellin).
 
 ---
 
-<h2>2 Step Techniques - Feature Detection & Transformation <img src="img/icon_twostep.png" style="float: right; height: 60px !important; width: auto !important; margin: 0 !important;"></h2>
+<h2>2 Step Techniques - Feature Detection & Transformation <img src="img/icon_twostep.png" style="float: right; height: 85px !important; width: auto !important; margin: 0 !important;"></h2>
 
 {{< unlisted >}}
 
@@ -336,8 +339,7 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 {{< unlisted >}}
 
-- unlike some other vision tasks, deep learning has not completely supplanted classical methods for registration.
-- However, deep learning based methods can learn complex patterns and deformations, making them suitable for challenging registration tasks and shine in speed and in leveraging training data.
+- Unlike many vision tasks, deep learning has not replaced classical registration, but it is **fast** and learns complex deformations from **training data**.
 
 <h4>VoxelMorph</h4>
 
@@ -345,13 +347,11 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 ![](img/voxelmorph.png)
 
-- Uses CNNs to learn spatial transformations between images (2D/3D)
-- Image similarity loss + smooth transformation regularization
-- Unsupervised. semi-supervised training with anatomical labels
-- Training (unsupervised) is still needed - so dataset can't be small
-- Offers both affine and elastic registration
-- Very fast with good interpretability
-- Expected user level is intermediate
+- CNN that predicts the transformation (2D/3D, affine or elastic)
+- Loss: image similarity + smoothness. Unsupervised (optional: anatomical labels)
+- Needs a large training dataset
+- Very fast, good interpretability
+- Intermediate user level
 
 {{</ horizontal >}}
 
@@ -362,27 +362,9 @@ Not only medical, the same idea is used on
 
 ---
 
-<h2>Challenges & Considerations</h2>
-
-{{< horizontal >}}
-
-- **Method Selection**:
-  - Match image type (e.g., multimodal) to appropriate method
-- **Transformation Type**:
-  - Fit transformation to deformation (e.g., rigid vs. non-rigid)
-- **Preprocessing**:
-  - Denoising, intensity correction, rescaling, applying filters
-  - In hard cases - Use extrinsic information (e.g., physical landmarks)
-
-![](img/edge_detection.png)
-
-{{</ horizontal >}}
-
-- Image source - Erik Meijering: [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
-
----
-
 ## Registration Validation
+
+<div class="spaced-list">
 
 - **Visual inspection first**: overlay the two images with different colormaps and partial opacity, or flip between the fixed and the registered image. Zoom in on small structures.
 - **The optimized metric is not a verdict**: validating with the same metric used for the alignment is misleading, since the method already optimized it. Absolute values say little, but comparing runs or steps (before vs. after, affine vs. elastic) is informative.
@@ -390,6 +372,8 @@ Not only medical, the same idea is used on
 - **Create your own ground truth**: click matching points in both images by hand. Measure their distance after registration. Don't use the same points for the registration itself.
 - **Elastic transformations**: look at the deformation (grid or field). It should be smooth, without folds or extreme stretching.
 - **Is the error acceptable for your use case?** Decide what accuracy your analysis needs.
+
+</div>
 
 {{< notes >}}
 Almost no one has ground truth for scientific images, so evaluation means collecting evidence, not getting a number.  
@@ -399,6 +383,26 @@ The red flags are cheap numbers: area of the warped image vs. the original (coll
 A local similarity map (e.g. mutual information computed in sliding windows) can point to regions worth inspecting, but it should not be used to label regions as failed.  
 Folding of an elastic transformation can be checked numerically with the Jacobian determinant of the deformation (zero or negative means folded).
 {{</ notes >}}
+
+---
+
+<h2>Challenges & Considerations</h2>
+
+{{< horizontal >}}
+
+- **Method Selection**:
+  - Match image type (e.g., multimodal) to appropriate method
+- **Transformation Type**:
+  - Fit transformation to deformation (e.g., rigid vs. non‑rigid)
+- **Preprocessing**:
+  - Denoising, intensity correction, rescaling, applying filters
+  - In hard cases - Use extrinsic information (e.g., physical landmarks)
+
+<div style="flex: none; width: 35vw; margin-right: 4vw;"><img src="img/edge_detection.png" style="width: 100%; max-width: none; max-height: none;"></div>
+
+{{</ horizontal >}}
+
+- Image source - Erik Meijering: [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
 
 ---
 
@@ -440,9 +444,9 @@ Overview of common tools, libraries, and plugins for image registration.
 **Thanks for participating. Please feel free to reach out with any questions.**
 
 {{< horizontal >}}
-![](img/hi-staff.jpg)
+<img src="img/hi-staff.jpg" style="flex: none; height: 36vh; width: auto; max-height: none; max-width: none;">
 
-![](img/logos/hi.png)
+<img src="img/logos/hi.png" style="flex: none; height: 25vh; width: auto; max-height: none; max-width: none;">
 {{</ horizontal >}}
 
 Contact:&nbsp;&nbsp;&nbsp;&nbsp; **ella.bahry@mdc-berlin.de**&nbsp;&nbsp;&nbsp;&nbsp;**support@helmholtz-imaging.de**

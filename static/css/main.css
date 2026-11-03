@@ -674,3 +674,7 @@ figure.center {
     align-self: center;
     max-width: 85%;
 }
+.reveal .spaced-list ul > li,
+.spaced-list ul > li {
+    margin-bottom: 3vh !important;
+}
