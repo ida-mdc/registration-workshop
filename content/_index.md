@@ -278,6 +278,7 @@ Meaning that an image with a single pixel intensity value will have minimum entr
 
 - [ITKElastix link: github.com/InsightSoftwareConsortium/ITKElastix](https://github.com/InsightSoftwareConsortium/ITKElastix)
 - [ANTs link: github.com/ANTsX/ANTs](https://github.com/ANTsX/ANTs)
+- [ANTsPy (Python) docs: antspy.readthedocs.io](https://antspy.readthedocs.io)
 
 ---
 
