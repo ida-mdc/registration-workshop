@@ -49,35 +49,7 @@ Image registration is the process of aligning multiple datasets into a common co
 
 ## Common needs in research
 
-{{< horizontal >}}
-Multimodal:
-![](img/multimodal.jpg)
-
-Stitching:
-![](img/stitching.jpg)
-
-Stack:
-![](img/slice_to_slice.jpg)  
-
-Viewpoint:
-![](img/coregistration.jpg)
-
-Temporal:
-![](img/timesteps.jpg)
-
-{{</ horizontal >}}
-
-{{< notes >}}
-Image registration is widely used across multiple disciplines.
-{{</ notes >}}
-
-- **Microscopy**: Aligning slices in a 3D stack, channels, runs, time points, tiles (stitching), and modalities.
-
-- **Medical Imaging**: Viewpoints, stacks, normalization to an atlas, co-registering images from different modalities (e.g., MRI, CT).
-
-- **Earth Science**: Georeferencing, integration from different sensors, aligning satellite images for change detection.
-
-- **Material Science**: Comparing material properties under varying conditions.
+<img src="img/common_needs.png" style="width: 100%; height: auto;">
 
 ---
 
