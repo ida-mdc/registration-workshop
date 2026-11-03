@@ -362,54 +362,46 @@ Not only medical, the same idea is used on
 
 ---
 
-## Registration Validation
+## Choosing an Approach
 
 <div class="spaced-list">
 
-- **Visual inspection first**: overlay the two images with different colormaps and partial opacity, or flip between the fixed and the registered image. Zoom in on small structures.
-- **The optimized metric is not a verdict**: validating with the same metric used for the alignment is misleading, since the method already optimized it. Absolute values say little, but comparing runs or steps (before vs. after, affine vs. elastic) is informative.
-- **Red flags without ground truth**: the image collapsed or blew up (its area changed massively), almost no overlap is left between registered and target, or (feature-based) only a few matched points, all clustered in one region.
-- **Create your own ground truth**: click matching points in both images by hand. Measure their distance after registration. Don't use the same points for the registration itself.
-- **Elastic transformations**: look at the deformation (grid or field). It should be smooth, without folds or extreme stretching.
-- **Is the error acceptable for your use case?** Decide what accuracy your analysis needs.
+- **Start global** (rigid / affine). Add a local (elastic) step only if deformations remain.
+- **Mostly a shift, similar images with overlap (e.g. tile stitching)** → phase correlation. Fast, but fails on low-texture or repetitive images.
+- **Easier cases: moderate transformation, similar-looking images** → intensity-based. Simple metric (MSE, correlation) for the same modality, mutual information also handles multimodal.
+- **Harder cases: large transformation, or very different appearance** → feature-based. Might fail with no distinct features, or with repetitive ones.
+- **Many similar pairs, GPU, need for speed, or a pretrained model exists** → deep learning. Needs training data.
 
 </div>
 
 {{< notes >}}
-Almost no one has ground truth for scientific images, so evaluation means collecting evidence, not getting a number.  
-Studies show that image similarity and tissue overlap are unreliable stand-ins for accuracy (Rohlfing 2012, IEEE TMI), and there is no agreed threshold separating a good from a poor deformable result.  
-Hand-clicked landmarks are the cheapest ground truth, and they are independent of the registration metric. They must be different points from the ones used to compute the transformation.  
-The red flags are cheap numbers: area of the warped image vs. the original (collapse or explosion), fraction of the registered image inside the target, number of matched inliers and how widely they are spread. They catch impossible results, not subtle errors.  
-A local similarity map (e.g. mutual information computed in sliding windows) can point to regions worth inspecting, but it should not be used to label regions as failed.  
-Folding of an elastic transformation can be checked numerically with the Jacobian determinant of the deformation (zero or negative means folded).
+These are rules of thumb, not a flowchart: try the simplest method that fits your data first.  
+Global before local: local methods need a decent starting alignment, so get the coarse alignment right first.  
+Intensity-based methods need no feature detection: they optimize a similarity metric directly on the pixels. Use a simple metric (MSE, correlation) when both images show the same contrast, and mutual information when the modalities differ.  
+Feature-based methods handle large transformations and very different-looking images well, as long as there are distinct features to detect and match. They fail when features are missing or repetitive.  
+Texture-poor or repetitive images make feature detection and phase correlation fail.  
+Deep learning pays off at scale (many similar pairs, a GPU, speed matters) or when a pretrained model for similar data exists. For a single pair, a classical method is usually simpler.
 {{</ notes >}}
 
 ---
 
-<h2>Challenges & Considerations</h2>
+<h2>More Considerations</h2>
 
 {{< horizontal >}}
 
-- **Method Selection**:
-  - Match image type (e.g., multimodal) to appropriate method
-- **Transformation Type**:
-  - Fit transformation to deformation (e.g., rigid vs. non‑rigid)
-- **Preprocessing**:
-  - Denoising, intensity correction, rescaling, applying filters
-  - In hard cases - Use extrinsic information (e.g., physical landmarks)
+- **Preprocess**:
+  - Denoise, correct intensity, rescale, segment, apply a filter (e.g., edge detector)
+  - Hard cases: add extrinsic information while imaging (i.e., physical landmarks)
+- **Transformation type**:
+  - Use a local transformation only if local deformations exist. Each extra step can add error.
+- **Apply to additional data**:
+  - Whichever approach you used, the same transformation can be applied to any additional data in the same space (e.g., the original, un-preprocessed image, other channels, masks, points)
 
 <div style="flex: none; width: 35vw; margin-right: 4vw;"><img src="img/edge_detection.png" style="width: 100%; max-width: none; max-height: none;"></div>
 
 {{</ horizontal >}}
 
 - Image source - Erik Meijering: [https://www.youtube.com/watch?v=ecu8kreTwYM](https://www.youtube.com/watch?v=ecu8kreTwYM)
-
----
-
-## Image Registration Guideline
-
-<br/><br/>
-![](img/flowchart.png)
 
 ---
 
@@ -434,6 +426,30 @@ Overview of common tools, libraries, and plugins for image registration.
 [https://bioinformatics.mdc-berlin.de/VoltRon/index.html](https://bioinformatics.mdc-berlin.de/VoltRon/index.html)
 - SIFT based image registration Python package:   
 [https://gitlab.com/ida-mdc/image-registration-tool](https://gitlab.com/ida-mdc/image-registration-tool)
+
+---
+
+## Registration Validation
+
+<div class="spaced-list">
+
+- **Visual inspection first**: overlay the two images with different colormaps and partial opacity, or flip between the fixed and the registered image. Zoom in on small structures.
+- **The optimized metric is not a verdict**: validating with the same metric used for the alignment is misleading, since the method already optimized it. Absolute values say little, but comparing runs or steps (before vs. after, affine vs. elastic) is informative.
+- **Red flags without ground truth**: the image collapsed or blew up (its area changed massively), almost no overlap is left between registered and target, or (feature-based) only a few matched points, all clustered in one region.
+- **Create your own ground truth**: click matching points in both images by hand. Measure their distance after registration. Don't use the same points for the registration itself.
+- **Elastic transformations**: look at the deformation (grid or field). It should be smooth, without folds or extreme stretching.
+- **Is the error acceptable for your use case?** Decide what accuracy your analysis needs.
+
+</div>
+
+{{< notes >}}
+Almost no one has ground truth for scientific images, so evaluation means collecting evidence, not getting a number.  
+Studies show that image similarity and tissue overlap are unreliable stand-ins for accuracy (Rohlfing 2012, IEEE TMI), and there is no agreed threshold separating a good from a poor deformable result.  
+Hand-clicked landmarks are the cheapest ground truth, and they are independent of the registration metric. They must be different points from the ones used to compute the transformation.  
+The red flags are cheap numbers: area of the warped image vs. the original (collapse or explosion), fraction of the registered image inside the target, number of matched inliers and how widely they are spread. They catch impossible results, not subtle errors.  
+A local similarity map (e.g. mutual information computed in sliding windows) can point to regions worth inspecting, but it should not be used to label regions as failed.  
+Folding of an elastic transformation can be checked numerically with the Jacobian determinant of the deformation (zero or negative means folded).
+{{</ notes >}}
 
 ---
 
