@@ -114,6 +114,12 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 
 ---
 
+## Local Deformations - Common Approaches
+
+<img src="img/local_deformations.png" style="width: 100%; height: auto;">
+
+---
+
 ## Image Interpolation - Reason
 
 - When we transform an image, we need to estimate pixel values at the new coordinates.
