@@ -374,6 +374,11 @@ DeepLabCut is a tracking tool that is open-source and offer great models that ca
 
 {{</ horizontal >}}
 
+Not only medical, the same idea is used on
+[seismic surveys](https://doi.org/10.1109/tgrs.2021.3081516) (modified VoxelMorph),
+[satellite images](https://doi.org/10.3390/rs13071294) and
+[X-ray/neutron images](https://doi.org/10.1364/ao.500442) (similar approach).
+
 ---
 
 <h2>Challenges & Considerations</h2>
