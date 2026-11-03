@@ -281,6 +281,19 @@ Meaning that an image with a single pixel intensity value will have minimum entr
 
 ---
 
+## Technique: Phase Correlation (Frequency Domain)
+
+{{< unlisted >}}
+
+<img src="img/phase_corr.png" style="width: 100%; height: auto;">
+
+- Phase correlation does step 3 for **every possible shift at once** (using the Fourier transform), so it is fast. The best match is the shift. No optimizer, no starting guess.
+- **Used for:** stitching overlapping microscopy tiles (e.g. Fiji, BigStitcher).
+- **Limits:** needs overlap and similar-looking images. Fails on repetitive or low-texture regions.
+- Rotation and scale are possible too, by first remapping to log-polar coordinates (Fourier-Mellin).
+
+---
+
 <h2>2 Step Techniques - Feature Detection & Transformation</h2>
 
 {{< unlisted >}}
