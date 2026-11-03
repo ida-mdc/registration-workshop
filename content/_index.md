@@ -440,7 +440,7 @@ Overview of common tools, libraries, and plugins for image registration.
 **Thanks for participating. Please feel free to reach out with any questions.**
 
 {{< horizontal >}}
-![](img/people/hi-staff.png)
+![](img/hi-staff.jpg)
 
 ![](img/logos/hi.png)
 {{</ horizontal >}}
