@@ -147,30 +147,11 @@ Image by [Cmglee](https://commons.wikimedia.org/wiki/User:Cmglee), license: CC B
 
 ## Image Registration Techniques - Categories
 
-{{< horizontal >}}
-
-<div>
-<h4>Integrated Methods:</h4>
-<p>One process to find similarity measurement and estimate the transformation.</p>
-</div>
-
-<div>
-<h4>Two-Step Methods:</h4> 
-<p>A process into two distinct steps: 
-<p> 1. feature detection/matching 
-<p> 2. transformation estimation/application</p>
-</div>
-
-<div>
-<h4>Deep Learning-Based Methods:</h4> 
-<p>Utilize neural networks to learn complex patterns for registration tasks.</p>
-</div>
-
-{{</ horizontal >}}
+<img src="img/categories.png" style="width: 100%; height: auto;">
 
 ---
 
-## Integrated Image Registration Techniques
+## Integrated Image Registration Techniques <img src="img/icon_integrated.png" style="float: right; height: 60px !important; width: auto !important; margin: 0 !important;">
 
 {{< unlisted >}}
 
@@ -270,7 +251,7 @@ Meaning that an image with a single pixel intensity value will have minimum entr
 
 ---
 
-<h2>2 Step Techniques - Feature Detection & Transformation</h2>
+<h2>2 Step Techniques - Feature Detection & Transformation <img src="img/icon_twostep.png" style="float: right; height: 60px !important; width: auto !important; margin: 0 !important;"></h2>
 
 {{< unlisted >}}
 
