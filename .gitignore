@@ -6,3 +6,4 @@ resources
 themes
 example_notebooks/.ipynb_checkpoints/
 example_notebooks/joint_histogram_iterations.tif
+.venv/
