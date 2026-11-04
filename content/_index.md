@@ -88,6 +88,7 @@ Rigid transformation requires 2 points, affine 3 points, perspective 4 points, i
 ---
 
 ## Local Deformations - Common Approaches
+{{< unlisted >}}
 
 <img src="img/local_deformations.png" style="width: 94%; height: auto; position: relative; top: 4vh;">
 
@@ -386,6 +387,7 @@ Deep learning pays off at scale (many similar pairs, a GPU, speed matters) or wh
 ---
 
 <h2>More Considerations</h2>
+{{< unlisted >}}
 
 {{< horizontal >}}
 
